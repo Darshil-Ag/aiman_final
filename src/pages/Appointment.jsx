@@ -19,6 +19,7 @@ import {
   Zap,
   Shield
 } from 'lucide-react'
+import logo from '../photo/logo.png'
 
 const Appointment = () => {
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -74,15 +75,49 @@ const Appointment = () => {
   ]
 
   const onSubmit = (data) => {
-    // Here you would typically send the data to your backend
-    console.log('Appointment data:', {
-      ...data,
-      department: selectedDepartment,
-      doctor: selectedDoctor,
-      date: selectedDate,
-      time: selectedTime
-    })
+    // Validate all required fields
+    if (!selectedDepartment || !selectedDate || !selectedTime) {
+      alert('Please fill in all required fields')
+      return
+    }
+
+    // Get department name
+    const deptName = departments.find(d => d.id === selectedDepartment)?.name || 'Not specified'
     
+    // Get doctor name
+    const doctorName = selectedDoctor 
+      ? doctors[selectedDepartment]?.find(d => d.id === selectedDoctor)?.name || 'Any available doctor'
+      : 'Any available doctor'
+
+    // Format the WhatsApp message
+    const message = `🏥 *APPOINTMENT BOOKING REQUEST*
+
+📋 *Patient Information:*
+👤 Name: ${data.fullName}
+📧 Email: ${data.email}
+📱 Phone: ${data.phone}
+${data.age ? `🎂 Age: ${data.age}` : ''}
+
+🏥 *Appointment Details:*
+🔹 Department: ${deptName}
+👨‍⚕️ Doctor: ${doctorName}
+📅 Date: ${selectedDate}
+🕐 Time: ${selectedTime}
+
+${data.message ? `📝 *Additional Information:*\n${data.message}` : ''}
+
+Please confirm my appointment. Thank you!`
+
+    // WhatsApp number (your number)
+    const whatsappNumber = '919414355273'
+    
+    // Create WhatsApp URL
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`
+    
+    // Open WhatsApp
+    window.open(whatsappUrl, '_blank')
+    
+    // Show success message
     setIsSubmitted(true)
     reset()
     setSelectedDepartment('')
@@ -107,7 +142,7 @@ const Appointment = () => {
 
   if (isSubmitted) {
     return (
-      <div className="pt-16 min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="pt-16 min-h-screen bg-primary-50 flex items-center justify-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -118,11 +153,11 @@ const Appointment = () => {
             <CheckCircle className="w-10 h-10 text-green-600" />
           </div>
           <h2 className="text-3xl font-bold text-gray-800 mb-4">
-            Appointment Booked!
+            WhatsApp Opened!
           </h2>
           <p className="text-gray-600 mb-6">
-            Thank you for choosing AIMAN Hospital. We have received your appointment request 
-            and will contact you shortly to confirm the details.
+            Your appointment details have been prepared. Please send the message on WhatsApp 
+            to complete your booking. We'll confirm your appointment shortly.
           </p>
           <div className="space-y-3">
             <button
@@ -146,8 +181,14 @@ const Appointment = () => {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-primary-600 via-primary-700 to-secondary-600 text-white">
-        <div className="absolute inset-0 bg-black opacity-20"></div>
+      <section className="relative py-20 bg-gradient-to-br from-primary-500 via-primary-600 to-secondary-700 text-white">
+        <div className="absolute inset-0 bg-black opacity-10"></div>
+        
+        {/* Logo Background */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <img src={logo} alt="AIMAN logo" className="opacity-15 w-80 h-auto" />
+        </div>
+        
         <div className="relative z-10 container-custom text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -157,7 +198,7 @@ const Appointment = () => {
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               Book Your Appointment
             </h1>
-            <p className="text-xl md:text-2xl text-gray-200 max-w-4xl mx-auto">
+            <p className="text-xl md:text-2xl text-purple-100 max-w-4xl mx-auto">
               Schedule your consultation with our expert doctors and take the first step 
               towards better health and wellness.
             </p>
@@ -166,7 +207,7 @@ const Appointment = () => {
       </section>
 
       {/* Appointment Form */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-primary-50">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -428,11 +469,14 @@ const Appointment = () => {
                 <div className="text-center">
                   <button
                     type="submit"
-                    className="btn-primary text-lg px-12 py-4"
+                    className="bg-green-600 hover:bg-green-700 text-white font-medium text-lg px-12 py-4 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl inline-flex items-center justify-center"
                   >
                     <Calendar className="w-5 h-5 mr-2" />
-                    Book Appointment
+                    Book via WhatsApp
                   </button>
+                  <p className="text-sm text-gray-500 mt-3">
+                    Click to send appointment details via WhatsApp
+                  </p>
                 </div>
               </form>
             </motion.div>

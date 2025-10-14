@@ -15,6 +15,7 @@ import {
   Calendar,
   Award
 } from 'lucide-react'
+import logo from '../photo/logo.png'
 
 const Testimonials = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
@@ -141,8 +142,14 @@ const Testimonials = () => {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-primary-600 via-primary-700 to-secondary-600 text-white">
-        <div className="absolute inset-0 bg-black opacity-20"></div>
+      <section className="relative py-20 bg-gradient-to-br from-primary-500 via-primary-600 to-secondary-700 text-white">
+        <div className="absolute inset-0 bg-black opacity-10"></div>
+        
+        {/* Logo Background */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <img src={logo} alt="AIMAN logo" className="opacity-15 w-80 h-auto" />
+        </div>
+        
         <div className="relative z-10 container-custom text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -152,7 +159,7 @@ const Testimonials = () => {
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               Patient Stories
             </h1>
-            <p className="text-xl md:text-2xl text-gray-200 max-w-4xl mx-auto">
+            <p className="text-xl md:text-2xl text-purple-100 max-w-4xl mx-auto">
               Real stories from real patients who have experienced exceptional care 
               and life-changing treatments at AIMAN Hospital.
             </p>
@@ -185,7 +192,7 @@ const Testimonials = () => {
       </section>
 
       {/* Featured Testimonial Carousel */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-primary-50">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -264,7 +271,7 @@ const Testimonials = () => {
                     <blockquote className="text-lg text-gray-700 mb-6 italic leading-relaxed">
                       "{filteredTestimonials[currentTestimonial].quote}"
                     </blockquote>
-                    <div className="bg-gray-50 rounded-lg p-4">
+                    <div className="bg-primary-50 rounded-lg p-4">
                       <h4 className="font-semibold text-gray-800 mb-2">Full Story:</h4>
                       <p className="text-gray-600 leading-relaxed">
                         {filteredTestimonials[currentTestimonial].story}
@@ -395,7 +402,7 @@ const Testimonials = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Share Your Story
             </h2>
-            <p className="text-xl mb-8 text-gray-200 max-w-3xl mx-auto">
+            <p className="text-xl mb-8 text-purple-100 max-w-3xl mx-auto">
               Have you had a positive experience at AIMAN Hospital? We'd love to hear your story 
               and share it with others who might benefit from your journey.
             </p>

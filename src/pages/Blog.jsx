@@ -18,6 +18,7 @@ import {
   BookOpen,
   TrendingUp
 } from 'lucide-react'
+import logo from '../photo/logo.png'
 
 const Blog = () => {
   const [selectedCategory, setSelectedCategory] = useState('all')
@@ -203,8 +204,14 @@ const Blog = () => {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-primary-600 via-primary-700 to-secondary-600 text-white">
-        <div className="absolute inset-0 bg-black opacity-20"></div>
+      <section className="relative py-20 bg-gradient-to-br from-primary-500 via-primary-600 to-secondary-700 text-white">
+        <div className="absolute inset-0 bg-black opacity-10"></div>
+        
+        {/* Logo Background */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <img src={logo} alt="AIMAN logo" className="opacity-15 w-80 h-auto" />
+        </div>
+        
         <div className="relative z-10 container-custom text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -214,7 +221,7 @@ const Blog = () => {
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               Health Resources & Blog
             </h1>
-            <p className="text-xl md:text-2xl text-gray-200 max-w-4xl mx-auto">
+            <p className="text-xl md:text-2xl text-purple-100 max-w-4xl mx-auto">
               Stay informed with our latest health tips, medical insights, 
               and wellness advice from our expert doctors and healthcare professionals.
             </p>
@@ -260,7 +267,7 @@ const Blog = () => {
 
       {/* Featured Articles */}
       {featuredPosts.length > 0 && (
-        <section className="section-padding bg-gray-50">
+        <section className="section-padding bg-primary-50">
           <div className="container-custom">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -482,7 +489,7 @@ const Blog = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Stay Updated
             </h2>
-            <p className="text-xl mb-8 text-gray-200 max-w-3xl mx-auto">
+            <p className="text-xl mb-8 text-purple-100 max-w-3xl mx-auto">
               Subscribe to our newsletter and get the latest health tips, 
               medical insights, and wellness advice delivered to your inbox.
             </p>

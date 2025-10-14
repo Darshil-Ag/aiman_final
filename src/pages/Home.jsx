@@ -134,19 +134,20 @@ const Home = () => {
     <div className="pt-16">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-600 via-primary-700 to-secondary-600"></div>
-        <div className="absolute inset-0 bg-black opacity-20"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-500 via-primary-600 to-secondary-700"></div>
+        <div className="absolute inset-0 bg-black opacity-10"></div>
+        
+        {/* Prominent logo background with better visibility */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <img src={logo} alt="AIMAN logo" className="opacity-20 w-96 h-auto animate-pulse" style={{ animationDuration: '4s' }} />
+        </div>
+        
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
           style={{
             backgroundImage: `url(${groupPhoto})`
           }}
         ></div>
-
-        {/* subtle logo watermark */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <img src={logo} alt="AIMAN logo" className="opacity-10 w-64 h-auto" />
-        </div>
         
         <div className="relative z-10 container-custom text-center text-white">
           <motion.div
@@ -250,7 +251,7 @@ const Home = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-primary-50">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -376,7 +377,7 @@ const Home = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-primary-50">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -512,8 +513,12 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-r from-primary-600 to-secondary-600">
-        <div className="container-custom text-center text-white">
+      <section className="section-padding bg-gradient-to-r from-primary-600 to-secondary-700 relative overflow-hidden">
+        {/* Logo watermark in CTA section */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-5">
+          <img src={logo} alt="AIMAN logo" className="w-80 h-auto" />
+        </div>
+        <div className="container-custom text-center text-white relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -523,7 +528,7 @@ const Home = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Ready to Start Your Health Journey?
             </h2>
-            <p className="text-xl mb-8 text-gray-200 max-w-3xl mx-auto">
+            <p className="text-xl mb-8 text-purple-100 max-w-3xl mx-auto">
               Book your consultation today and take the first step towards 
               better health and wellness.
             </p>
