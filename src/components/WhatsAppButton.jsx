@@ -4,7 +4,7 @@ import { MessageCircle, X } from 'lucide-react'
 
 const WhatsAppButton = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const phoneNumber = '919414355273' // Format: country code + number without spaces or special characters
+  const phoneNumber = '918800833411' // Format: country code + number without spaces or special characters
 
   const handleWhatsAppClick = () => {
     const message = encodeURIComponent('Hello! I would like to know more about your services.')
