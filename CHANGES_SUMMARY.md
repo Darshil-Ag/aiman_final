@@ -68,7 +68,7 @@ The logo from `src/photo/logo.png` has been added as an animated background wate
 **Integration:**
 - Added to `src/App.jsx` - Renders globally on all pages
 
-**WhatsApp Number:** 8800833411 (India)
+**WhatsApp Number:** 9414355273 (India)
 
 ---
 
@@ -124,7 +124,7 @@ Please confirm my appointment. Thank you!
 ### WhatsApp URL Format
 Both WhatsApp integrations use the `wa.me` URL format:
 ```javascript
-https://wa.me/918800833411?text=[encoded_message]
+https://wa.me/919414355273?text=[encoded_message]
 ```
 
 **Benefits:**
@@ -141,13 +141,13 @@ https://wa.me/918800833411?text=[encoded_message]
 **To Update WhatsApp Number:**
 
 1. **Floating Button** - `src/components/WhatsAppButton.jsx`
-   - Line 6: `const phoneNumber = '918800833411'`
+   - Line 6: `const phoneNumber = '919414355273'`
 
 2. **Appointment Form** - `src/pages/Appointment.jsx`
-   - Line 111: `const whatsappNumber = '918800833411'`
+   - Line 111: `const whatsappNumber = '919414355273'`
 
 **Format:** Country code + number (no spaces, no special characters)
-- Example: India +91 8800833411 → `918800833411`
+- Example: India +91 9414355273 → `919414355273`
 
 ---
 
@@ -171,7 +171,7 @@ https://wa.me/918800833411?text=[encoded_message]
 ## 🚀 Testing Checklist
 
 ### Before Going Live
-- [ ] Verify WhatsApp number is correct (8800833411)
+- [ ] Verify WhatsApp number is correct (9414355273)
 - [ ] Test WhatsApp button on mobile device
 - [ ] Test WhatsApp button on desktop browser
 - [ ] Fill out appointment form completely
@@ -211,7 +211,7 @@ https://wa.me/918800833411?text=[encoded_message]
 
 ## 📞 Contact Information
 
-**Hospital WhatsApp Number:** +91 8800833411
+**Hospital WhatsApp Number:** +91 9414355273
 
 **Message Endpoints:**
 - General Inquiries: Via floating WhatsApp button
@@ -233,5 +233,5 @@ Suggestions for future improvements:
 **Last Updated:** October 14, 2025
 **Version:** 2.0
 **Theme:** Lavender/Purple
-**Primary Contact:** WhatsApp +91 8800833411
+**Primary Contact:** WhatsApp +91 9414355273
 

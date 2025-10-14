@@ -4,12 +4,25 @@ import { MessageCircle, X } from 'lucide-react'
 
 const WhatsAppButton = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const phoneNumber = '918800833411' // Format: country code + number without spaces or special characters
+  const phoneNumber = '919414355273' // Format: country code + number without spaces or special characters
 
   const handleWhatsAppClick = () => {
-    const message = encodeURIComponent('Hello! I would like to know more about your services.')
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`
-    window.open(whatsappUrl, '_blank')
+    // More comprehensive message for WhatsApp Business
+    const message = `Hello AIMAN Hospital! 👋
+
+I'm interested in learning more about your services.
+
+I would like information about:
+- Appointments and consultations
+- Available departments
+- Doctor availability
+- General inquiries
+
+Looking forward to hearing from you!`
+    
+    // Use WhatsApp Business API format for better compatibility
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer')
   }
 
   return (

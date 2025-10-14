@@ -89,33 +89,39 @@ const Appointment = () => {
       ? doctors[selectedDepartment]?.find(d => d.id === selectedDoctor)?.name || 'Any available doctor'
       : 'Any available doctor'
 
-    // Format the WhatsApp message
-    const message = `🏥 *APPOINTMENT BOOKING REQUEST*
+    // Format the WhatsApp message - Compatible with WhatsApp Business
+    const message = `🏥 APPOINTMENT BOOKING REQUEST
 
-📋 *Patient Information:*
-👤 Name: ${data.fullName}
-📧 Email: ${data.email}
-📱 Phone: ${data.phone}
-${data.age ? `🎂 Age: ${data.age}` : ''}
+Hi AIMAN Hospital Team,
 
-🏥 *Appointment Details:*
-🔹 Department: ${deptName}
-👨‍⚕️ Doctor: ${doctorName}
-📅 Date: ${selectedDate}
-🕐 Time: ${selectedTime}
+I would like to book an appointment with the following details:
 
-${data.message ? `📝 *Additional Information:*\n${data.message}` : ''}
+📋 PATIENT INFORMATION:
+Name: ${data.fullName}
+Email: ${data.email}
+Phone: ${data.phone}
+${data.age ? `Age: ${data.age} years` : ''}
 
-Please confirm my appointment. Thank you!`
+🏥 APPOINTMENT DETAILS:
+Department: ${deptName}
+Doctor: ${doctorName}
+Preferred Date: ${selectedDate}
+Preferred Time: ${selectedTime}
 
-    // WhatsApp number (your number)
-    const whatsappNumber = '918800833411'
+${data.message ? `📝 ADDITIONAL NOTES:\n${data.message}` : ''}
+
+Please confirm my appointment at your earliest convenience. Thank you!
+
+Looking forward to your response.`
+
+    // WhatsApp Business number
+    const whatsappNumber = '919414355273'
     
-    // Create WhatsApp URL
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`
+    // Create WhatsApp URL - Use API format for better compatibility
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(message)}`
     
-    // Open WhatsApp
-    window.open(whatsappUrl, '_blank')
+    // Open WhatsApp in new tab
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer')
     
     // Show success message
     setIsSubmitted(true)

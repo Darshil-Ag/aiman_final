@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
 import FixedLogoBackground from './components/FixedLogoBackground'
+import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
 import About from './pages/About'
 import Departments from './pages/Departments'
@@ -21,6 +22,7 @@ import AdminBlogs from './pages/admin/AdminBlogs'
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-primary-50 relative">
         <FixedLogoBackground />
         <div className="relative z-10">

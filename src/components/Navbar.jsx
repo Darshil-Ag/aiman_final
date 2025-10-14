@@ -11,7 +11,8 @@ const Navbar = () => {
 
   // Function to scroll to top and navigate
   const handleNavigation = (path) => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    // Instant scroll to top - no delay
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
     navigate(path)
     setIsOpen(false)
   }

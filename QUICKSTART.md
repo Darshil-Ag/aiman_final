@@ -26,7 +26,7 @@ The development server will start at: `http://localhost:5173`
 - Modern gradient backgrounds
 
 ### 2. WhatsApp Integration 📱
-- **Phone Number:** 8800833411
+- **Phone Number:** 9414355273
 - **Floating Button:** Available on all pages
 - **Appointment Booking:** Direct WhatsApp integration
 - **No Setup Required:** Works out of the box!
@@ -74,7 +74,7 @@ Customer Journey:
 3. WhatsApp opens on their device
 4. Message is pre-filled with all details
 5. They review and send
-6. You receive the appointment request on WhatsApp (8800833411)
+6. You receive the appointment request on WhatsApp (9414355273)
 7. You confirm the appointment via WhatsApp chat
 ```
 
@@ -94,7 +94,7 @@ Customer Journey:
 **File 1:** `src/components/WhatsAppButton.jsx`
 ```javascript
 // Line 6
-const phoneNumber = 'YOUR_NUMBER_HERE' // Format: 918800833411
+const phoneNumber = 'YOUR_NUMBER_HERE' // Format: 919414355273
 ```
 
 **File 2:** `src/pages/Appointment.jsx`
@@ -191,5 +191,5 @@ Your AIMAN Hospital website is ready to go with:
 
 Just run `npm run dev` and start using it!
 
-**WhatsApp Number:** 8800833411 (Already configured)
+**WhatsApp Number:** 9414355273 (Already configured)
 
