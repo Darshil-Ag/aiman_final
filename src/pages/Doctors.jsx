@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
+import { useData } from '../contexts/DataContext'
 import { 
   Heart, 
   Brain, 
@@ -22,155 +23,27 @@ import {
   Search
 } from 'lucide-react'
 import logo from '../photo/logo.png'
-import aditya from '../photo/aditya.jpg'
-import akshita from '../photo/akshita.jpg'
-import keshav from '../photo/keshav.jpg'
-import kiran from '../photo/kiran.jpg'
-import piyush from '../photo/piyush.jpg'
-import sangeetha from '../photo/sangeetha.jpg'
 
 const Doctors = () => {
+  const { doctors } = useData()
   const [selectedSpecialty, setSelectedSpecialty] = useState('all')
   const [searchTerm, setSearchTerm] = useState('')
 
+  // Get unique specialties from doctors
   const specialties = [
     { id: 'all', name: 'All Specialties' },
-    { id: 'cardiology', name: 'Cardiology' },
-    { id: 'mental-health', name: 'Mental Health' },
-    { id: 'pediatrics', name: 'Pediatrics' },
-    { id: 'orthopedics', name: 'Orthopedics' },
-    { id: 'neurology', name: 'Neurology' },
-    { id: 'ophthalmology', name: 'Ophthalmology' },
-    { id: 'emergency', name: 'Emergency Medicine' }
-  ]
-
-  const doctors = [
-    {
-      id: 1,
-      name: 'Dr. Aditya Sharma',
-      specialty: 'cardiology',
-      specialtyName: 'Cardiology',
-      title: 'Consultant Cardiologist',
-      experience: '12+ years',
-      education: 'MBBS, MD (Cardiology)',
-      hospital: 'AIMAN Hospital',
-      rating: 4.9,
-      reviews: 142,
-      consultationFee: '$150',
-      availability: 'Mon-Fri 9AM-5PM',
-      languages: ['English', 'Hindi'],
-      image: aditya,
-      bio: 'Dr. Aditya specializes in interventional cardiology and preventive heart care with a patient-first approach.',
-      achievements: ['Interventional Cardiologist', 'PCI Specialist'],
-      icon: Heart,
-      color: 'from-red-500 to-pink-500'
-    },
-    {
-      id: 2,
-      name: 'Dr. Akshita Mehta',
-      specialty: 'pediatrics',
-      specialtyName: 'Pediatrics',
-      title: 'Pediatrician',
-      experience: '10+ years',
-      education: 'MBBS, MD (Pediatrics)',
-      hospital: 'AIMAN Hospital',
-      rating: 4.8,
-      reviews: 98,
-      consultationFee: '$100',
-      availability: 'Mon-Thu 10AM-6PM',
-      languages: ['English'],
-      image: akshita,
-      bio: 'Dr. Akshita provides child-friendly, evidence-based pediatric care focused on growth and development.',
-      achievements: ['Child Health Specialist'],
-      icon: Baby,
-      color: 'from-green-500 to-teal-500'
-    },
-    {
-      id: 3,
-      name: 'Dr. Keshav Rao',
-      specialty: 'orthopedics',
-      specialtyName: 'Orthopedics',
-      title: 'Orthopedic Surgeon',
-      experience: '14+ years',
-      education: 'MBBS, MS (Orthopedics)',
-      hospital: 'AIMAN Hospital',
-      rating: 4.9,
-      reviews: 121,
-      consultationFee: '$160',
-      availability: 'Tue-Thu 8AM-4PM',
-      languages: ['English'],
-      image: keshav,
-      bio: 'Dr. Keshav specializes in joint replacement and sports injury management.',
-      achievements: ['Joint Replacement Specialist'],
-      icon: Activity,
-      color: 'from-blue-500 to-cyan-500'
-    },
-    {
-      id: 4,
-      name: 'Dr. Kiran Patel',
-      specialty: 'neurology',
-      specialtyName: 'Neurology',
-      title: 'Neurologist',
-      experience: '11+ years',
-      education: 'MBBS, DM (Neurology)',
-      hospital: 'AIMAN Hospital',
-      rating: 4.8,
-      reviews: 87,
-      consultationFee: '$170',
-      availability: 'Mon-Wed 9AM-5PM',
-      languages: ['English'],
-      image: kiran,
-      bio: 'Dr. Kiran focuses on stroke care, epilepsy and complex neurological disorders.',
-      achievements: ['Stroke Care Specialist'],
-      icon: Brain,
-      color: 'from-indigo-500 to-purple-500'
-    },
-    {
-      id: 5,
-      name: 'Dr. Piyush Verma',
-      specialty: 'ent',
-      specialtyName: 'ENT',
-      title: 'ENT Specialist',
-      experience: '9+ years',
-      education: 'MBBS, MS (ENT)',
-      hospital: 'AIMAN Hospital',
-      rating: 4.7,
-      reviews: 64,
-      consultationFee: '$120',
-      availability: 'Wed-Fri 10AM-6PM',
-      languages: ['English', 'Hindi'],
-      image: piyush,
-      bio: 'Dr. Piyush treats a range of ENT conditions including hearing and sinus disorders.',
-      achievements: ['ENT Surgeon'],
-      icon: Stethoscope,
-      color: 'from-yellow-500 to-orange-500'
-    },
-    {
-      id: 6,
-      name: 'Dr. Sangeetha Rao',
-      specialty: 'gynecology',
-      specialtyName: 'Gynecology',
-      title: 'Gynecologist',
-      experience: '13+ years',
-      education: 'MBBS, MS (OBG)',
-      hospital: 'AIMAN Hospital',
-      rating: 4.9,
-      reviews: 103,
-      consultationFee: '$140',
-      availability: 'Mon-Fri 9AM-4PM',
-      languages: ['English'],
-      image: sangeetha,
-      bio: 'Dr. Sangeetha provides comprehensive women’s health services including prenatal care.',
-      achievements: ['Women’s Health Specialist'],
-      icon: Star,
-      color: 'from-pink-500 to-red-500'
-    }
+    ...Array.from(new Set(doctors.map(d => d.specialty)))
+      .map(specialty => ({
+        id: specialty.toLowerCase().replace(/\s+/g, '-'),
+        name: specialty
+      }))
   ]
 
   const filteredDoctors = doctors.filter(doctor => {
-    const matchesSpecialty = selectedSpecialty === 'all' || doctor.specialty === selectedSpecialty
+    const matchesSpecialty = selectedSpecialty === 'all' || 
+      doctor.specialty.toLowerCase().replace(/\s+/g, '-') === selectedSpecialty
     const matchesSearch = doctor.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         doctor.specialtyName.toLowerCase().includes(searchTerm.toLowerCase())
+                         doctor.specialty.toLowerCase().includes(searchTerm.toLowerCase())
     return matchesSpecialty && matchesSearch
   })
 
@@ -267,12 +140,18 @@ const Doctors = () => {
                 className="card group hover:scale-105 transition-transform duration-300"
               >
                 {/* Doctor Image */}
-                <div className="w-full h-48 rounded-lg overflow-hidden mb-4">
-                  <img
-                    src={doctor.image}
-                    alt={doctor.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
+                <div className="w-full h-48 rounded-lg overflow-hidden mb-4 bg-gradient-to-br from-primary-400 to-secondary-500">
+                  {doctor.image ? (
+                    <img
+                      src={doctor.image}
+                      alt={doctor.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <Users className="w-20 h-20 text-white opacity-50" />
+                    </div>
+                  )}
                 </div>
 
                 {/* Doctor Info */}
@@ -280,69 +159,48 @@ const Doctors = () => {
                   <h3 className="text-xl font-semibold text-gray-800 mb-1">
                     {doctor.name}
                   </h3>
-                  <p className="text-primary-600 font-medium mb-1">
-                    {doctor.title}
+                  <p className="text-primary-600 font-medium mb-2">
+                    {doctor.specialty}
                   </p>
-                  <div className="flex items-center justify-center space-x-2 mb-2">
-                    <div className={`w-6 h-6 bg-gradient-to-r ${doctor.color} rounded-full flex items-center justify-center`}>
-                      {React.createElement(doctor.icon, { className: "w-3 h-3 text-white" })}
-                    </div>
-                    <span className="text-sm text-gray-600">
-                      {doctor.specialtyName}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Rating */}
-                <div className="flex items-center justify-center space-x-1 mb-3">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className={`w-4 h-4 ${
-                        i < Math.floor(doctor.rating)
-                          ? 'text-yellow-400 fill-current'
-                          : 'text-gray-300'
-                      }`}
-                    />
-                  ))}
-                  <span className="text-sm text-gray-600 ml-2">
-                    {doctor.rating} ({doctor.reviews} reviews)
-                  </span>
                 </div>
 
                 {/* Experience & Education */}
                 <div className="space-y-2 mb-4 text-sm text-gray-600">
                   <div className="flex items-center space-x-2">
                     <Award className="w-4 h-4" />
-                    <span>{doctor.experience}</span>
+                    <span>{doctor.experience} years experience</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <GraduationCap className="w-4 h-4" />
-                    <span>{doctor.hospital}</span>
+                    <span>{doctor.qualifications}</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <Clock className="w-4 h-4" />
-                    <span>{doctor.availability}</span>
+                    <Mail className="w-4 h-4" />
+                    <span className="truncate">{doctor.email}</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Phone className="w-4 h-4" />
+                    <span>{doctor.phone}</span>
                   </div>
                 </div>
 
-                {/* Consultation Fee */}
-                <div className="text-center mb-4">
-                  <span className="text-2xl font-bold text-primary-600">
-                    {doctor.consultationFee}
-                  </span>
-                  <span className="text-gray-600 ml-1">consultation</span>
-                </div>
+                {doctor.description && (
+                  <p className="text-sm text-gray-600 mb-4 line-clamp-2">
+                    {doctor.description}
+                  </p>
+                )}
 
                 {/* Action Buttons */}
                 <div className="space-y-2">
-                  <button className="w-full btn-primary">
+                  <a href="/appointment" className="w-full btn-primary flex items-center justify-center">
                     <Calendar className="w-4 h-4 mr-2" />
                     Book Appointment
-                  </button>
-                  <button className="w-full btn-outline text-sm py-2">
-                    View Profile
-                  </button>
+                  </a>
+                  {!doctor.available && (
+                    <div className="text-center text-sm text-red-600">
+                      Currently Unavailable
+                    </div>
+                  )}
                 </div>
               </motion.div>
             ))}
