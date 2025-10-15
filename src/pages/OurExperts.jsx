@@ -26,10 +26,14 @@ import {
 import logo from '../photo/logo.png'
 
 const OurExperts = () => {
-  const { doctors } = useData()
+  const dataContext = useData()
+  const doctors = dataContext?.doctors || []
   const [selectedSpecialty, setSelectedSpecialty] = useState('all')
   const [searchTerm, setSearchTerm] = useState('')
   
+  console.log('OurExperts: Received', doctors.length, 'doctors')
+  console.log('OurExperts: Doctor IDs:', doctors.map(d => d.id))
+  console.log('OurExperts: Doctor names:', doctors.map(d => d.name))
 
   // Get unique specialties from doctors
   const specialties = [
@@ -48,6 +52,10 @@ const OurExperts = () => {
                          doctor.specialty.toLowerCase().includes(searchTerm.toLowerCase())
     return matchesSpecialty && matchesSearch
   })
+  
+  console.log('OurExperts: Filtered doctors:', filteredDoctors.length)
+  console.log('OurExperts: Selected specialty:', selectedSpecialty)
+  console.log('OurExperts: Search term:', searchTerm)
 
   return (
     <div className="pt-16">

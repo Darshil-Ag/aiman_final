@@ -26,6 +26,7 @@ import piyush from '../photo/piyush.jpg'
 import sangeetha from '../photo/sangeetha.jpg'
 
 const Home = () => {
+  console.log('Home: Group photo imported:', groupPhoto)
 
   const specialties = [
     {
@@ -140,7 +141,7 @@ const Home = () => {
         <div className="absolute inset-0 bg-black opacity-10"></div>
         
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
           style={{
             backgroundImage: `url(${groupPhoto})`
           }}

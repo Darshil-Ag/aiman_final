@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useParams, Link } from 'react-router-dom'
+import { useData } from '../contexts/DataContext'
 import { 
   Calendar, 
   Phone, 
@@ -26,202 +27,44 @@ import sangeethaImg from '../photo/sangeetha.jpg'
 
 const DoctorProfile = () => {
   const { doctorName } = useParams()
+  const dataContext = useData()
+  const contextDoctors = dataContext?.doctors || []
   
-  // Doctor data - in a real app, this would come from an API
-  const doctors = {
-    'aditya': {
-      name: 'Dr. Aditya Sharma',
-      specialty: 'Cardiology',
-      image: adityaImg,
-      experience: '15+',
-      qualifications: 'MD, DM Cardiology, FACC',
-      email: 'aditya.sharma@aimanhospital.com',
-      phone: '+1 (555) 123-4567',
-      availability: 'Mon-Fri 9AM-5PM',
-      description: 'Dr. Aditya Sharma is a renowned cardiologist with over 15 years of experience in treating complex heart conditions. He specializes in interventional cardiology and has performed thousands of successful procedures.',
+  // Convert array to object for easier lookup
+  const doctors = contextDoctors.reduce((acc, doctor) => {
+    acc[doctor.id] = {
+      name: doctor.name,
+      specialty: doctor.specialty,
+      image: doctor.image,
+      experience: doctor.experience,
+      qualifications: doctor.qualifications,
+      email: doctor.email,
+      phone: doctor.phone,
+      availability: 'Mon-Fri 9AM-5PM', // Default availability
+      description: doctor.description,
       education: [
-        'MD - All India Institute of Medical Sciences',
-        'DM Cardiology - Post Graduate Institute of Medical Education and Research',
-        'Fellowship in Interventional Cardiology - Cleveland Clinic'
+        doctor.qualifications,
+        'Additional training and certifications'
       ],
       specializations: [
-        'Coronary Angiography',
-        'Angioplasty',
-        'Cardiac Catheterization',
-        'Heart Failure Management',
-        'Preventive Cardiology'
+        doctor.specialty,
+        'General Consultation',
+        'Preventive Care'
       ],
       achievements: [
-        'Best Cardiologist Award 2023',
-        'Published 50+ research papers',
-        'International Speaker',
-        'Board Certified Cardiologist'
+        `${doctor.experience} years of experience`,
+        'Board Certified',
+        'Patient-focused care'
       ],
-      languages: ['English', 'Hindi', 'Spanish'],
-      rating: 4.9,
-      reviews: 127
-    },
-    'akshita': {
-      name: 'Dr. Akshita Patel',
-      specialty: 'Mental Health & Psychiatry',
-      image: akshitaImg,
-      experience: '12+',
-      qualifications: 'MD, DPM, PhD Psychology',
-      email: 'akshita.patel@aimanhospital.com',
-      phone: '+1 (555) 123-4568',
-      availability: 'Mon-Fri 8AM-6PM',
-      description: 'Dr. Akshita Patel is a compassionate psychiatrist specializing in mood disorders, anxiety, and trauma therapy. She combines evidence-based treatments with a patient-centered approach.',
-      education: [
-        'MD - Harvard Medical School',
-        'DPM - National Institute of Mental Health',
-        'PhD Psychology - Stanford University'
-      ],
-      specializations: [
-        'Depression Treatment',
-        'Anxiety Disorders',
-        'Trauma Therapy',
-        'Bipolar Disorder',
-        'Psychotherapy'
-      ],
-      achievements: [
-        'Mental Health Excellence Award 2022',
-        'Published 30+ research papers',
-        'International Conference Speaker',
-        'Board Certified Psychiatrist'
-      ],
-      languages: ['English', 'Hindi', 'Gujarati'],
+      languages: ['English', 'Hindi'],
       rating: 4.8,
-      reviews: 89
-    },
-    'keshav': {
-      name: 'Dr. Keshav Singh',
-      specialty: 'Orthopedics',
-      image: keshavImg,
-      experience: '18+',
-      qualifications: 'MS Orthopedics, MCh, FRCS',
-      email: 'keshav.singh@aimanhospital.com',
-      phone: '+1 (555) 123-4569',
-      availability: 'Mon-Fri 8AM-6PM',
-      description: 'Dr. Keshav Singh is a leading orthopedic surgeon specializing in joint replacement and sports medicine. He has performed over 2000 successful surgeries and is known for his innovative techniques.',
-      education: [
-        'MS Orthopedics - AIIMS Delhi',
-        'MCh Orthopedics - Royal College of Surgeons',
-        'Fellowship in Joint Replacement - Mayo Clinic'
-      ],
-      specializations: [
-        'Knee Replacement',
-        'Hip Replacement',
-        'Sports Medicine',
-        'Arthroscopy',
-        'Spine Surgery'
-      ],
-      achievements: [
-        'Best Orthopedic Surgeon 2023',
-        'Published 40+ research papers',
-        'International Speaker',
-        'Board Certified Orthopedic Surgeon'
-      ],
-      languages: ['English', 'Hindi', 'Punjabi'],
-      rating: 4.9,
-      reviews: 156
-    },
-    'kiran': {
-      name: 'Dr. Kiran Reddy',
-      specialty: 'Pediatrics',
-      image: kiranImg,
-      experience: '14+',
-      qualifications: 'MD Pediatrics, DCH, MRCPCH',
-      email: 'kiran.reddy@aimanhospital.com',
-      phone: '+1 (555) 123-4570',
-      availability: 'Mon-Sat 9AM-6PM',
-      description: 'Dr. Kiran Reddy is a dedicated pediatrician with a special focus on child development and preventive care. She has a gentle approach that makes children feel comfortable during visits.',
-      education: [
-        'MD Pediatrics - Christian Medical College',
-        'DCH - Royal College of Pediatrics',
-        'MRCPCH - London'
-      ],
-      specializations: [
-        'Child Development',
-        'Vaccination Programs',
-        'Pediatric Emergency',
-        'Neonatology',
-        'Adolescent Medicine'
-      ],
-      achievements: [
-        'Pediatric Excellence Award 2022',
-        'Published 25+ research papers',
-        'Child Health Advocate',
-        'Board Certified Pediatrician'
-      ],
-      languages: ['English', 'Hindi', 'Telugu'],
-      rating: 4.8,
-      reviews: 203
-    },
-    'piyush': {
-      name: 'Dr. Piyush Agarwal',
-      specialty: 'Neurology',
-      image: piyushImg,
-      experience: '16+',
-      qualifications: 'MD Neurology, DM Neurology, FRCP',
-      email: 'piyush.agarwal@aimanhospital.com',
-      phone: '+1 (555) 123-4571',
-      availability: 'Mon-Fri 9AM-5PM',
-      description: 'Dr. Piyush Agarwal is a distinguished neurologist specializing in stroke treatment and neurological disorders. He leads our stroke unit and has saved countless lives through timely intervention.',
-      education: [
-        'MD Neurology - AIIMS Delhi',
-        'DM Neurology - NIMHANS Bangalore',
-        'Fellowship in Stroke Medicine - Johns Hopkins'
-      ],
-      specializations: [
-        'Stroke Treatment',
-        'Epilepsy Management',
-        'Multiple Sclerosis',
-        'Parkinson\'s Disease',
-        'Neurological Rehabilitation'
-      ],
-      achievements: [
-        'Stroke Excellence Award 2023',
-        'Published 35+ research papers',
-        'International Speaker',
-        'Board Certified Neurologist'
-      ],
-      languages: ['English', 'Hindi', 'Bengali'],
-      rating: 4.9,
-      reviews: 134
-    },
-    'sangeetha': {
-      name: 'Dr. Sangeetha Iyer',
-      specialty: 'Ophthalmology',
-      image: sangeethaImg,
-      experience: '13+',
-      qualifications: 'MS Ophthalmology, DNB, FICO',
-      email: 'sangeetha.iyer@aimanhospital.com',
-      phone: '+1 (555) 123-4572',
-      availability: 'Mon-Fri 9AM-5PM',
-      description: 'Dr. Sangeetha Iyer is a skilled ophthalmologist specializing in cataract surgery and retinal treatments. She has performed over 3000 successful eye surgeries with excellent outcomes.',
-      education: [
-        'MS Ophthalmology - Aravind Eye Hospital',
-        'DNB Ophthalmology - National Board',
-        'Fellowship in Retinal Surgery - Wills Eye Hospital'
-      ],
-      specializations: [
-        'Cataract Surgery',
-        'LASIK Surgery',
-        'Retinal Surgery',
-        'Glaucoma Treatment',
-        'Pediatric Ophthalmology'
-      ],
-      achievements: [
-        'Ophthalmology Excellence Award 2022',
-        'Published 20+ research papers',
-        'International Speaker',
-        'Board Certified Ophthalmologist'
-      ],
-      languages: ['English', 'Hindi', 'Tamil'],
-      rating: 4.8,
-      reviews: 178
+      reviews: 50
     }
-  }
+    return acc
+  }, {})
+  
+  console.log('DoctorProfile: Looking for doctor:', doctorName)
+  console.log('DoctorProfile: Available doctors:', Object.keys(doctors))
 
   const doctor = doctors[doctorName]
 
