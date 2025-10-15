@@ -481,8 +481,8 @@ Looking forward to your response.`
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <MapPin className="w-8 h-8 text-accent-600" />
+              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <MapPin className="w-8 h-8 text-primary-600" />
               </div>
               <h3 className="text-xl font-semibold text-gray-800 mb-2">
                 Visit Us
