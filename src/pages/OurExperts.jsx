@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { useData } from '../contexts/DataContext'
 import { 
   Heart, 
@@ -24,10 +25,11 @@ import {
 } from 'lucide-react'
 import logo from '../photo/logo.png'
 
-const Doctors = () => {
+const OurExperts = () => {
   const { doctors } = useData()
   const [selectedSpecialty, setSelectedSpecialty] = useState('all')
   const [searchTerm, setSearchTerm] = useState('')
+  
 
   // Get unique specialties from doctors
   const specialties = [
@@ -65,7 +67,7 @@ const Doctors = () => {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              Meet Our Expert Doctors
+              Our Experts
             </h1>
             <p className="text-xl md:text-2xl text-purple-100 max-w-4xl mx-auto">
               Our team of board-certified specialists is dedicated to providing 
@@ -84,7 +86,7 @@ const Doctors = () => {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
                 type="text"
-                placeholder="Search doctors by name or specialty..."
+                placeholder="Search experts by name or specialty..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
@@ -111,7 +113,7 @@ const Doctors = () => {
         </div>
       </section>
 
-      {/* Doctors Grid */}
+      {/* Experts Grid */}
       <section className="section-padding bg-primary-50">
         <div className="container-custom">
           <motion.div
@@ -122,10 +124,10 @@ const Doctors = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-              {selectedSpecialty === 'all' ? 'All Doctors' : specialties.find(s => s.id === selectedSpecialty)?.name}
+              {selectedSpecialty === 'all' ? 'All Experts' : specialties.find(s => s.id === selectedSpecialty)?.name}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              {filteredDoctors.length} doctor{filteredDoctors.length !== 1 ? 's' : ''} available
+              {filteredDoctors.length} expert{filteredDoctors.length !== 1 ? 's' : ''} available
             </p>
           </motion.div>
 
@@ -192,10 +194,14 @@ const Doctors = () => {
 
                 {/* Action Buttons */}
                 <div className="space-y-2">
-                  <a href="/appointment" className="w-full btn-primary flex items-center justify-center">
+                  <Link to={`/doctor/${doctor.id}`} className="w-full btn-outline flex items-center justify-center mb-2">
+                    <Users className="w-4 h-4 mr-2" />
+                    View Profile
+                  </Link>
+                  <Link to="/appointment" className="w-full btn-primary flex items-center justify-center">
                     <Calendar className="w-4 h-4 mr-2" />
                     Book Appointment
-                  </a>
+                  </Link>
                   {!doctor.available && (
                     <div className="text-center text-sm text-red-600">
                       Currently Unavailable
@@ -212,7 +218,7 @@ const Doctors = () => {
                 <Users className="w-12 h-12 text-gray-400" />
               </div>
               <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                No doctors found
+                No experts found
               </h3>
               <p className="text-gray-600">
                 Try adjusting your search criteria or specialty filter.
@@ -222,7 +228,7 @@ const Doctors = () => {
         </div>
       </section>
 
-      {/* Why Choose Our Doctors */}
+      {/* Why Choose Our Experts */}
       <section className="section-padding bg-white">
         <div className="container-custom">
           <motion.div
@@ -233,7 +239,7 @@ const Doctors = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-              Why Choose Our Doctors?
+              Why Choose Our Experts?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Our medical professionals are carefully selected for their expertise, 
@@ -246,7 +252,7 @@ const Doctors = () => {
               {
                 icon: Award,
                 title: 'Board Certified',
-                description: 'All our doctors are board-certified in their respective specialties'
+                description: 'All our experts are board-certified in their respective specialties'
               },
               {
                 icon: GraduationCap,
@@ -297,27 +303,27 @@ const Doctors = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Ready to Meet Your Doctor?
+              Ready to Meet Your Expert?
             </h2>
             <p className="text-xl mb-8 text-purple-100 max-w-3xl mx-auto">
               Book an appointment with one of our expert doctors and take the first step 
               towards better health and wellness.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/appointment"
+              <Link
+                to="/appointment"
                 className="bg-white text-primary-600 hover:bg-gray-100 font-medium px-8 py-4 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl inline-flex items-center justify-center"
               >
                 <Calendar className="w-5 h-5 mr-2" />
                 Book Appointment Now
-              </a>
-              <a
-                href="/contact"
+              </Link>
+              <Link
+                to="/contact"
                 className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-medium px-8 py-4 rounded-lg transition-all duration-200 inline-flex items-center justify-center"
               >
                 <Phone className="w-5 h-5 mr-2" />
                 Call for Consultation
-              </a>
+              </Link>
             </div>
           </motion.div>
         </div>
@@ -326,4 +332,4 @@ const Doctors = () => {
   )
 }
 
-export default Doctors
+export default OurExperts

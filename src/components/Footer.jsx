@@ -16,19 +16,24 @@ const Footer = () => {
   const quickLinks = [
     { name: 'Home', path: '/' },
     { name: 'About Us', path: '/about' },
-    { name: 'Departments', path: '/departments' },
-    { name: 'Doctors', path: '/doctors' },
+    { name: 'Our Services', path: '/our-services' },
+    { name: 'Our Experts', path: '/our-experts' },
+    { name: 'FAQs', path: '/faqs' },
     { name: 'Appointment', path: '/appointment' },
     { name: 'Contact', path: '/contact' },
   ]
 
   const services = [
-    { name: 'Emergency Care', path: '/services/emergency-care' },
-    { name: 'Mental Health', path: '/services/mental-health' },
-    { name: 'Cardiology', path: '/services/cardiology' },
-    { name: 'Neurology', path: '/services/neurology' },
-    { name: 'Pediatrics', path: '/services/pediatrics' },
-    { name: 'Orthopedics', path: '/services/orthopedics' },
+    { name: '24/7 Emergency Mental Health', path: '/services/emergency-mental-health' },
+    { name: 'OPD Services', path: '/services/opd-services' },
+    { name: 'IPD Services', path: '/services/ipd-services' },
+    { name: 'De-addiction & Rehab', path: '/services/deaddiction-rehab' },
+    { name: 'Child & Adolescent', path: '/services/child-adolescent' },
+    { name: 'Women\'s Mental Health', path: '/services/womens-mental-health' },
+    { name: 'Geriatric Mental Health', path: '/services/geriatric-mental-health' },
+    { name: 'Clinical Psychology', path: '/services/clinical-psychology' },
+    { name: 'Sexual Wellness', path: '/services/sexual-wellness' },
+    { name: 'Home Visit Services', path: '/services/home-visit' },
   ]
 
   const socialLinks = [

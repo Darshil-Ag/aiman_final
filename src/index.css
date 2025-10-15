@@ -2,27 +2,27 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary-50: #faf5ff;
-  --color-primary-100: #f3e8ff;
-  --color-primary-200: #e9d5ff;
-  --color-primary-300: #d8b4fe;
-  --color-primary-400: #c084fc;
-  --color-primary-500: #a855f7;
-  --color-primary-600: #9333ea;
-  --color-primary-700: #7e22ce;
-  --color-primary-800: #6b21a8;
-  --color-primary-900: #581c87;
+  --color-primary-50: #f8f9ff;
+  --color-primary-100: #f0f2ff;
+  --color-primary-200: #e1e5ff;
+  --color-primary-300: #c7cfff;
+  --color-primary-400: #a7aae1;
+  --color-primary-500: #a7aae1;
+  --color-primary-600: #9699d4;
+  --color-primary-700: #8588c7;
+  --color-primary-800: #696fc7;
+  --color-primary-900: #696fc7;
   
-  --color-secondary-50: #faf5ff;
-  --color-secondary-100: #f3e8ff;
-  --color-secondary-200: #e9d5ff;
-  --color-secondary-300: #d8b4fe;
-  --color-secondary-400: #c084fc;
-  --color-secondary-500: #a855f7;
-  --color-secondary-600: #9333ea;
-  --color-secondary-700: #7e22ce;
-  --color-secondary-800: #6b21a8;
-  --color-secondary-900: #581c87;
+  --color-secondary-50: #f8f9ff;
+  --color-secondary-100: #f0f2ff;
+  --color-secondary-200: #e1e5ff;
+  --color-secondary-300: #c7cfff;
+  --color-secondary-400: #a7aae1;
+  --color-secondary-500: #a7aae1;
+  --color-secondary-600: #9699d4;
+  --color-secondary-700: #8588c7;
+  --color-secondary-800: #696fc7;
+  --color-secondary-900: #696fc7;
   
   --color-accent-50: #fdf4ff;
   --color-accent-100: #fae8ff;

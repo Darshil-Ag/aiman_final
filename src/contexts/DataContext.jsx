@@ -1,4 +1,10 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
+import adityaImg from '../photo/aditya.jpg'
+import akshitaImg from '../photo/akshita.jpg'
+import keshavImg from '../photo/keshav.jpg'
+import kiranImg from '../photo/kiran.jpg'
+import piyushImg from '../photo/piyush.jpg'
+import sangeethaImg from '../photo/sangeetha.jpg'
 
 const DataContext = createContext()
 
@@ -14,32 +20,82 @@ export const DataProvider = ({ children }) => {
   // Initial data with some sample entries
   const [doctors, setDoctors] = useState(() => {
     const saved = localStorage.getItem('aimanDoctors')
-    return saved ? JSON.parse(saved) : [
+    const defaultDoctors = [
       { 
-        id: '1', 
+        id: 'aditya', 
         name: 'Dr. Aditya Sharma', 
         specialty: 'Cardiology', 
-        experience: '12', 
-        email: 'aditya@aiman.com',
-        phone: '+91 98765 43210',
-        qualifications: 'MBBS, MD (Cardiology)',
-        description: 'Specialized in interventional cardiology with extensive experience.',
-        image: '/src/photo/aditya.jpg',
+        experience: '15+', 
+        email: 'aditya.sharma@aimanhospital.com',
+        phone: '+1 (555) 123-4567',
+        qualifications: 'MD, DM Cardiology, FACC',
+        description: 'Dr. Aditya Sharma is a renowned cardiologist with over 15 years of experience in treating complex heart conditions. He specializes in interventional cardiology and has performed thousands of successful procedures.',
+        image: adityaImg,
         available: true
       },
       { 
-        id: '2', 
-        name: 'Dr. Akshita Mehta', 
+        id: 'akshita', 
+        name: 'Dr. Akshita Patel', 
+        specialty: 'Mental Health & Psychiatry', 
+        experience: '12+', 
+        email: 'akshita.patel@aimanhospital.com',
+        phone: '+1 (555) 123-4568',
+        qualifications: 'MD, DPM, PhD Psychology',
+        description: 'Dr. Akshita Patel is a compassionate psychiatrist specializing in mood disorders, anxiety, and trauma therapy. She combines evidence-based treatments with a patient-centered approach.',
+        image: akshitaImg,
+        available: true
+      },
+      { 
+        id: 'keshav', 
+        name: 'Dr. Keshav Singh', 
+        specialty: 'Orthopedics', 
+        experience: '18+', 
+        email: 'keshav.singh@aimanhospital.com',
+        phone: '+1 (555) 123-4569',
+        qualifications: 'MS Orthopedics, MCh, FRCS',
+        description: 'Dr. Keshav Singh is a leading orthopedic surgeon specializing in joint replacement and sports medicine. He has performed over 2000 successful surgeries and is known for his innovative techniques.',
+        image: keshavImg,
+        available: true
+      },
+      { 
+        id: 'kiran', 
+        name: 'Dr. Kiran Reddy', 
         specialty: 'Pediatrics', 
-        experience: '10', 
-        email: 'akshita@aiman.com',
-        phone: '+91 98765 43211',
-        qualifications: 'MBBS, MD (Pediatrics)',
-        description: 'Expert in child healthcare and development.',
-        image: '/src/photo/akshita.jpg',
+        experience: '14+', 
+        email: 'kiran.reddy@aimanhospital.com',
+        phone: '+1 (555) 123-4570',
+        qualifications: 'MD Pediatrics, DCH, MRCPCH',
+        description: 'Dr. Kiran Reddy is a dedicated pediatrician with a special focus on child development and preventive care. She has a gentle approach that makes children feel comfortable during visits.',
+        image: kiranImg,
+        available: true
+      },
+      { 
+        id: 'piyush', 
+        name: 'Dr. Piyush Agarwal', 
+        specialty: 'Neurology', 
+        experience: '16+', 
+        email: 'piyush.agarwal@aimanhospital.com',
+        phone: '+1 (555) 123-4571',
+        qualifications: 'MD Neurology, DM Neurology, FRCP',
+        description: 'Dr. Piyush Agarwal is a distinguished neurologist specializing in stroke treatment and neurological disorders. He leads our stroke unit and has saved countless lives through timely intervention.',
+        image: piyushImg,
+        available: true
+      },
+      { 
+        id: 'sangeetha', 
+        name: 'Dr. Sangeetha Iyer', 
+        specialty: 'Ophthalmology', 
+        experience: '13+', 
+        email: 'sangeetha.iyer@aimanhospital.com',
+        phone: '+1 (555) 123-4572',
+        qualifications: 'MS Ophthalmology, DNB, FICO',
+        description: 'Dr. Sangeetha Iyer is a skilled ophthalmologist specializing in cataract surgery and retinal treatments. She has performed over 3000 successful eye surgeries with excellent outcomes.',
+        image: sangeethaImg,
         available: true
       }
     ]
+    
+    return saved ? JSON.parse(saved) : defaultDoctors
   })
 
   const [blogs, setBlogs] = useState(() => {

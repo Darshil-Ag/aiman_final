@@ -7,13 +7,15 @@ import FixedLogoBackground from './components/FixedLogoBackground'
 import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
 import About from './pages/About'
-import Departments from './pages/Departments'
-import Doctors from './pages/Doctors'
+import OurServices from './pages/OurServices'
+import OurExperts from './pages/OurExperts'
 import Appointment from './pages/Appointment'
-import Testimonials from './pages/Testimonials'
+import FAQs from './pages/FAQs'
 import Blog from './pages/Blog'
 import Contact from './pages/Contact'
 import Services from './pages/Services'
+import ServiceDetail from './pages/ServiceDetail'
+import DoctorProfile from './pages/DoctorProfile'
 import AdminLogin from './pages/admin/AdminLogin'
 import AdminDashboard from './pages/admin/AdminDashboard'
 import AdminDoctors from './pages/admin/AdminDoctors'
@@ -48,21 +50,21 @@ function App() {
                 <WhatsAppButton />
               </>
             } />
-            <Route path="/departments" element={
+            <Route path="/our-services" element={
               <>
                 <Navbar />
                 <motion.main initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
-                  <Departments />
+                  <OurServices />
                 </motion.main>
                 <Footer />
                 <WhatsAppButton />
               </>
             } />
-            <Route path="/doctors" element={
+            <Route path="/our-experts" element={
               <>
                 <Navbar />
                 <motion.main initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
-                  <Doctors />
+                  <OurExperts />
                 </motion.main>
                 <Footer />
                 <WhatsAppButton />
@@ -78,11 +80,11 @@ function App() {
                 <WhatsAppButton />
               </>
             } />
-            <Route path="/testimonials" element={
+            <Route path="/faqs" element={
               <>
                 <Navbar />
                 <motion.main initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
-                  <Testimonials />
+                  <FAQs />
                 </motion.main>
                 <Footer />
                 <WhatsAppButton />
@@ -114,7 +116,19 @@ function App() {
               <>
                 <Navbar />
                 <motion.main initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
-                  <Services />
+                  <ServiceDetail />
+                </motion.main>
+                <Footer />
+                <WhatsAppButton />
+              </>
+            } />
+
+            {/* Doctor Profile Routes */}
+            <Route path="/doctor/:doctorName" element={
+              <>
+                <Navbar />
+                <motion.main initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+                  <DoctorProfile />
                 </motion.main>
                 <Footer />
                 <WhatsAppButton />

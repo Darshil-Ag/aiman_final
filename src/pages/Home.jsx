@@ -26,19 +26,6 @@ import piyush from '../photo/piyush.jpg'
 import sangeetha from '../photo/sangeetha.jpg'
 
 const Home = () => {
-  const [isVisible, setIsVisible] = React.useState(true)
-
-  // Show/hide floating logo based on scroll
-  React.useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY
-      // Hide logo when scrolled past first section (about 800px)
-      setIsVisible(scrollPosition < 800)
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
   const specialties = [
     {
@@ -146,40 +133,6 @@ const Home = () => {
 
   return (
     <div className="pt-16">
-      {/* Big Floating Logo - Visible throughout home page */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ 
-          opacity: isVisible ? 0.25 : 0,
-          scale: isVisible ? 1 : 0.5,
-        }}
-        transition={{ 
-          duration: 1,
-          type: "spring",
-          stiffness: 100
-        }}
-        className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[1] pointer-events-none"
-      >
-        <motion.img
-          src={logo}
-          alt="AIMAN Hospital - Floating Logo"
-          className="select-none"
-          style={{
-            width: '900px',
-            height: 'auto',
-            filter: 'drop-shadow(0 0 60px rgba(220, 38, 38, 0.5)) brightness(1.1)',
-          }}
-          animate={{
-            scale: [1, 1.12, 1, 1.12, 1, 1, 1, 1],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut",
-            times: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 1, 1]
-          }}
-        />
-      </motion.div>
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">

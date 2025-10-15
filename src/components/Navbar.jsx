@@ -20,10 +20,10 @@ const Navbar = () => {
   const navItems = [
     { name: 'Home', path: '/' },
     { name: 'About Us', path: '/about' },
-    { name: 'Departments', path: '/departments' },
-    { name: 'Doctors', path: '/doctors' },
+    { name: 'Our Services', path: '/our-services' },
+    { name: 'Our Experts', path: '/our-experts' },
+    { name: 'FAQs', path: '/faqs' },
     { name: 'Appointment', path: '/appointment' },
-    { name: 'Testimonials', path: '/testimonials' },
     { name: 'Blog', path: '/blog' }
   ]
 

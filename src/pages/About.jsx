@@ -16,6 +16,15 @@ import {
 } from 'lucide-react'
 import logo from '../photo/logo.png'
 
+// Content from content folder
+const objective = "To provide comprehensive, high-quality healthcare services that improve the health and well-being of our community through compassionate care, advanced technology, and continuous innovation. We are committed to delivering exceptional medical services with integrity, excellence, and patient-centered care."
+
+const vision = "To be the leading healthcare provider in the region, recognized for excellence in patient care, medical innovation, and community health improvement. We envision a future where every patient receives world-class healthcare services delivered with compassion, expertise, and cutting-edge technology."
+
+const slogan = "Your Health, Our Priority - Excellence in Healthcare"
+
+const fullName = "Advanced Institute of Medical and Allied Sciences Network"
+
 const About = () => {
   const stats = [
     { icon: Users, number: '50+', label: 'Expert Doctors' },
@@ -116,9 +125,12 @@ const About = () => {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              About AIMAN Hospital
+              About {fullName}
             </h1>
-            <p className="text-xl md:text-2xl text-purple-100 max-w-4xl mx-auto">
+            <p className="text-xl md:text-2xl text-purple-100 max-w-4xl mx-auto mb-4">
+              {slogan}
+            </p>
+            <p className="text-lg text-purple-200 max-w-4xl mx-auto">
               For over two decades, we have been dedicated to providing exceptional healthcare 
               services with compassion, innovation, and excellence.
             </p>
@@ -143,9 +155,7 @@ const About = () => {
               </div>
               <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Mission</h2>
               <p className="text-gray-600 leading-relaxed">
-                To provide comprehensive, high-quality healthcare services that improve the health 
-                and well-being of our community through compassionate care, advanced technology, 
-                and continuous innovation.
+                {objective}
               </p>
             </motion.div>
 
@@ -162,9 +172,7 @@ const About = () => {
               </div>
               <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Vision</h2>
               <p className="text-gray-600 leading-relaxed">
-                To be the leading healthcare provider in the region, recognized for excellence 
-                in patient care, medical innovation, and community health improvement, setting 
-                the standard for healthcare delivery.
+                {vision}
               </p>
             </motion.div>
 
