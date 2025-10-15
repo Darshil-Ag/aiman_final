@@ -11,7 +11,6 @@ import {
   Zap, 
   Shield,
   Stethoscope,
-  Star,
   Calendar,
   Clock,
   MapPin,
@@ -31,9 +30,6 @@ const OurExperts = () => {
   const [selectedSpecialty, setSelectedSpecialty] = useState('all')
   const [searchTerm, setSearchTerm] = useState('')
   
-  console.log('OurExperts: Received', doctors.length, 'doctors')
-  console.log('OurExperts: Doctor IDs:', doctors.map(d => d.id))
-  console.log('OurExperts: Doctor names:', doctors.map(d => d.name))
 
   // Get unique specialties from doctors
   const specialties = [
@@ -52,10 +48,6 @@ const OurExperts = () => {
                          doctor.specialty.toLowerCase().includes(searchTerm.toLowerCase())
     return matchesSpecialty && matchesSearch
   })
-  
-  console.log('OurExperts: Filtered doctors:', filteredDoctors.length)
-  console.log('OurExperts: Selected specialty:', selectedSpecialty)
-  console.log('OurExperts: Search term:', searchTerm)
 
   return (
     <div className="pt-16">
@@ -268,9 +260,9 @@ const OurExperts = () => {
                 description: 'Graduates from leading medical schools and training programs'
               },
               {
-                icon: Star,
-                title: 'High Ratings',
-                description: 'Consistently high patient satisfaction and review ratings'
+                icon: Users,
+                title: 'Patient-Centered Care',
+                description: 'Compassionate care focused on individual patient needs and comfort'
               },
               {
                 icon: Heart,

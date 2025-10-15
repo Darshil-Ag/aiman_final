@@ -11,7 +11,6 @@ import {
   Award, 
   GraduationCap, 
   Users, 
-  Star,
   ArrowLeft,
   Heart,
   Stethoscope,
@@ -56,15 +55,11 @@ const DoctorProfile = () => {
         'Board Certified',
         'Patient-focused care'
       ],
-      languages: ['English', 'Hindi'],
-      rating: 4.8,
-      reviews: 50
+      languages: ['English', 'Hindi']
     }
     return acc
   }, {})
   
-  console.log('DoctorProfile: Looking for doctor:', doctorName)
-  console.log('DoctorProfile: Available doctors:', Object.keys(doctors))
 
   const doctor = doctors[doctorName]
 
@@ -127,10 +122,6 @@ const DoctorProfile = () => {
                   <div className="flex items-center space-x-2">
                     <Award className="w-5 h-5" />
                     <span>{doctor.experience} years experience</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Star className="w-5 h-5 text-yellow-400" />
-                    <span>{doctor.rating} ({doctor.reviews} reviews)</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Clock className="w-5 h-5" />

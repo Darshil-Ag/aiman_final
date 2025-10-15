@@ -31,9 +31,9 @@ const Contact = () => {
       icon: MapPin,
       title: 'Address',
       details: [
-        '123 Healthcare Avenue',
-        'Medical District',
-        'City 12345, State'
+        '83P, Residency Green',
+        'Jal Vihar Colony, Sector 46',
+        'Gurgaon, Haryana 122003'
       ],
       color: 'from-red-500 to-pink-500'
     },
@@ -41,9 +41,8 @@ const Contact = () => {
       icon: Phone,
       title: 'Phone Numbers',
       details: [
-        'Main: +1 (555) 123-4567',
-        'Emergency: 108',
-        'Appointments: +1 (555) 123-4568'
+        'Main: +91 88008 33411',
+        'Emergency: 108'
       ],
       color: 'from-blue-500 to-cyan-500'
     },
@@ -51,10 +50,9 @@ const Contact = () => {
       icon: Mail,
       title: 'Email Addresses',
       details: [
-        'General: info@aimanhospital.com',
-        'Appointments: appointments@aimanhospital.com',
-        'Emergency: emergency@aimanhospital.com'
-      ],
+        'General: info@aimanhealth.com',
+        'Founder: founder@aimanhealth.com'
+             ],
       color: 'from-green-500 to-teal-500'
     },
     {
@@ -70,14 +68,14 @@ const Contact = () => {
   ]
 
   const departments = [
-    { name: 'Emergency Department', phone: '+1 (555) 123-4569' },
-    { name: 'Cardiology', phone: '+1 (555) 123-4570' },
-    { name: 'Mental Health', phone: '+1 (555) 123-4571' },
-    { name: 'Pediatrics', phone: '+1 (555) 123-4572' },
-    { name: 'Orthopedics', phone: '+1 (555) 123-4573' },
-    { name: 'Neurology', phone: '+1 (555) 123-4574' },
-    { name: 'Ophthalmology', phone: '+1 (555) 123-4575' },
-    { name: 'Radiology', phone: '+1 (555) 123-4576' }
+    { name: 'Emergency Department', phone: '+91 88008 33411' },
+    { name: 'Cardiology', phone: '+91 88008 33411' },
+    { name: 'Mental Health', phone: '+91 88008 33411' },
+    { name: 'Pediatrics', phone: '+91 88008 33411' },
+    { name: 'Orthopedics', phone: '+91 88008 33411' },
+    { name: 'Neurology', phone: '+91 88008 33411' },
+    { name: 'Ophthalmology', phone: '+91 88008 33411' },
+    { name: 'Radiology', phone: '+91 88008 33411' }
   ]
 
   const facilities = [
@@ -117,8 +115,35 @@ const Contact = () => {
   ]
 
   const onSubmit = (data) => {
-    // Here you would typically send the data to your backend
-    console.log('Contact form data:', data)
+    // Format the WhatsApp message
+    const message = `🏥 CONTACT FORM MESSAGE
+
+Hi AIMAN Hospital Team,
+
+I would like to get in touch with the following details:
+
+📋 CONTACT INFORMATION:
+Name: ${data.firstName} ${data.lastName}
+Email: ${data.email}
+Phone: ${data.phone}
+
+📝 MESSAGE DETAILS:
+Subject: ${data.subject}
+Message: ${data.message}
+
+Please get back to me at your earliest convenience.
+
+Thank you!`
+
+    // Create WhatsApp URL
+    const whatsappNumber = '9414355273'
+    const encodedMessage = encodeURIComponent(message)
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`
+    
+    // Open WhatsApp in new tab
+    window.open(whatsappUrl, '_blank')
+    
+    // Show success message
     setIsSubmitted(true)
     reset()
   }
@@ -136,18 +161,18 @@ const Contact = () => {
             <CheckCircle className="w-10 h-10 text-green-600" />
           </div>
           <h2 className="text-3xl font-bold text-gray-800 mb-4">
-            Message Sent!
+            WhatsApp Opened!
           </h2>
           <p className="text-gray-600 mb-6">
-            Thank you for contacting AIMAN Hospital. We have received your message 
-            and will get back to you within 24 hours.
+            Your message has been formatted and WhatsApp is opening. Please send the message 
+            to complete your inquiry. We'll respond as soon as possible.
           </p>
           <div className="space-y-3">
             <button
               onClick={() => setIsSubmitted(false)}
               className="w-full btn-primary"
             >
-              Send Another Message
+              Send Another Message via WhatsApp
             </button>
             <a
               href="/"
@@ -272,7 +297,7 @@ const Contact = () => {
                 </h2>
                 <p className="text-gray-600 mb-6">
                   Have a question or need to schedule an appointment? 
-                  Fill out the form below and we'll get back to you soon.
+                  Fill out the form below and it will be sent to us via WhatsApp.
                 </p>
 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -394,7 +419,7 @@ const Contact = () => {
 
                   <button
                     type="submit"
-                    className="w-full btn-primary text-lg py-4"
+                    className="w-full btn-primary text-lg py-4 flex items-center justify-center"
                   >
                     <Send className="w-5 h-5 mr-2" />
                     Send Message
@@ -416,23 +441,35 @@ const Contact = () => {
                 <h3 className="text-2xl font-bold text-gray-800 mb-4">
                   Find Us
                 </h3>
-                <div className="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center">
-                  <div className="text-center">
-                    <MapPin className="w-12 h-12 text-gray-400 mx-auto mb-2" />
-                    <p className="text-gray-600">Interactive Map</p>
-                    <p className="text-sm text-gray-500">
-                      Google Maps integration would go here
-                    </p>
-                  </div>
+                <div className="w-full h-64 rounded-lg overflow-hidden shadow-lg">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2155!2d-74.0059!3d40.7128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQyJzQ2LjAiTiA3NMKwMDAnMjEuMiJX!5e0!3m2!1sen!2sus!4v1234567890"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="AIMAN Hospital Location"
+                    className="w-full h-full"
+                  ></iframe>
                 </div>
                 <div className="mt-4 p-4 bg-primary-50 rounded-lg">
                   <div className="flex items-center space-x-2 mb-2">
                     <Navigation className="w-5 h-5 text-primary-600" />
                     <span className="font-medium text-primary-800">Get Directions</span>
                   </div>
-                  <p className="text-sm text-primary-700">
-                    123 Healthcare Avenue, Medical District, City 12345
-                  </p>
+                  <p className="text-sm text-primary-700 mb-3">
+                  83P , Residency Green, Jal Vihar Colony, Sector 46, Gurgaon, Haryana 122003             </p>
+                  <a
+                    href="https://maps.app.goo.gl/KUSokbpUDrfc71X96"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center space-x-2 bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors duration-200"
+                  >
+                    <Navigation className="w-4 h-4" />
+                    <span>Open in Google Maps</span>
+                  </a>
                 </div>
               </div>
 

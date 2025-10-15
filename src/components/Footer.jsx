@@ -116,24 +116,23 @@ const Footer = () => {
                 <MapPin className="w-5 h-5 text-primary-400 mt-1 flex-shrink-0" />
                 <div>
                   <p className="text-gray-300 text-sm sm:text-base break-words">
-                    123 Healthcare Avenue<br />
-                    Medical District, City 12345
+                  83P , Residency Green, Sector 46, Main Sector Road <br />
+                  Gurgaon, Haryana 122003
                   </p>
                 </div>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-primary-400 flex-shrink-0" />
                 <div>
-                  <a href="tel:+15551234567" className="text-gray-300 text-sm sm:text-base hover:text-primary-400 transition-colors">
-                    +1 (555) 123-4567
+                  <a href="tel:+918800833411" className="text-gray-300 text-sm sm:text-base hover:text-primary-400 transition-colors">
+                    +91 88008 33411
                   </a>
-                  <p className="text-red-400 text-xs sm:text-sm font-semibold">Emergency: 108</p>
                 </div>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-primary-400 flex-shrink-0" />
-                <a href="mailto:info@aimanhospital.com" className="text-gray-300 text-sm sm:text-base hover:text-primary-400 transition-colors break-all">
-                  info@aimanhospital.com
+                <a href="mailto:info@aimanhealth.com" className="text-gray-300 text-sm sm:text-base hover:text-primary-400 transition-colors break-all">
+                  info@aimanhealth.com
                 </a>
               </div>
               <div className="flex items-start space-x-3">

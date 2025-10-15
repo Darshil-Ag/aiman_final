@@ -439,8 +439,20 @@ const AdminDoctors = () => {
                       value={formData.image}
                       onChange={handleInputChange}
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                      placeholder="/src/photo/doctor.jpg"
+                      placeholder="https://example.com/doctor.jpg or /src/photo/doctor.jpg"
                     />
+                    {formData.image && (
+                      <div className="mt-2">
+                        <img
+                          src={formData.image}
+                          alt="Preview"
+                          className="w-full h-48 object-cover rounded-lg"
+                          onError={(e) => {
+                            e.target.style.display = 'none'
+                          }}
+                        />
+                      </div>
+                    )}
                   </div>
 
                   {/* Available Checkbox */}

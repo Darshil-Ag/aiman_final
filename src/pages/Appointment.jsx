@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
+import { useData } from '../contexts/DataContext'
 import { 
   Calendar, 
   Clock, 
@@ -23,51 +24,13 @@ import logo from '../photo/logo.png'
 
 const Appointment = () => {
   const [isSubmitted, setIsSubmitted] = useState(false)
-  const [selectedDepartment, setSelectedDepartment] = useState('')
   const [selectedDoctor, setSelectedDoctor] = useState('')
   const [selectedDate, setSelectedDate] = useState('')
   const [selectedTime, setSelectedTime] = useState('')
 
   const { register, handleSubmit, formState: { errors }, reset } = useForm()
+  const { doctors } = useData()
 
-  const departments = [
-    { id: 'cardiology', name: 'Cardiology', icon: Heart, color: 'from-red-500 to-pink-500' },
-    { id: 'mental-health', name: 'Mental Health', icon: Brain, color: 'from-purple-500 to-indigo-500' },
-    { id: 'pediatrics', name: 'Pediatrics', icon: Baby, color: 'from-green-500 to-teal-500' },
-    { id: 'orthopedics', name: 'Orthopedics', icon: Activity, color: 'from-blue-500 to-cyan-500' },
-    { id: 'neurology', name: 'Neurology', icon: Brain, color: 'from-indigo-500 to-purple-500' },
-    { id: 'ophthalmology', name: 'Ophthalmology', icon: Eye, color: 'from-yellow-500 to-orange-500' },
-    { id: 'emergency', name: 'Emergency Medicine', icon: Zap, color: 'from-red-600 to-red-500' },
-    { id: 'radiology', name: 'Radiology', icon: Shield, color: 'from-gray-500 to-gray-600' }
-  ]
-
-  const doctors = {
-    'cardiology': [
-      { id: 'dr-sarah-johnson', name: 'Dr. Sarah Johnson', title: 'Chief of Cardiology' },
-      { id: 'dr-david-kumar', name: 'Dr. David Kumar', title: 'Interventional Cardiologist' }
-    ],
-    'mental-health': [
-      { id: 'dr-michael-chen', name: 'Dr. Michael Chen', title: 'Senior Psychiatrist' }
-    ],
-    'pediatrics': [
-      { id: 'dr-emily-rodriguez', name: 'Dr. Emily Rodriguez', title: 'Pediatric Specialist' }
-    ],
-    'orthopedics': [
-      { id: 'dr-james-wilson', name: 'Dr. James Wilson', title: 'Orthopedic Surgeon' }
-    ],
-    'neurology': [
-      { id: 'dr-lisa-park', name: 'Dr. Lisa Park', title: 'Neurologist' }
-    ],
-    'ophthalmology': [
-      { id: 'dr-robert-thompson', name: 'Dr. Robert Thompson', title: 'Eye Surgeon' }
-    ],
-    'emergency': [
-      { id: 'dr-amanda-foster', name: 'Dr. Amanda Foster', title: 'Emergency Physician' }
-    ],
-    'radiology': [
-      { id: 'dr-general', name: 'General Radiology', title: 'Imaging Specialist' }
-    ]
-  }
 
   const timeSlots = [
     '09:00 AM', '09:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM',
@@ -76,18 +39,15 @@ const Appointment = () => {
 
   const onSubmit = (data) => {
     // Validate all required fields
-    if (!selectedDepartment || !selectedDate || !selectedTime) {
+    if (!selectedDoctor || !selectedDate || !selectedTime) {
       alert('Please fill in all required fields')
       return
     }
 
-    // Get department name
-    const deptName = departments.find(d => d.id === selectedDepartment)?.name || 'Not specified'
-    
-    // Get doctor name
-    const doctorName = selectedDoctor 
-      ? doctors[selectedDepartment]?.find(d => d.id === selectedDoctor)?.name || 'Any available doctor'
-      : 'Any available doctor'
+    // Get doctor name and specialty
+    const selectedDoctorData = doctors.find(d => d.id === selectedDoctor)
+    const doctorName = selectedDoctorData?.name || 'Not specified'
+    const doctorSpecialty = selectedDoctorData?.specialty || 'Not specified'
 
     // Format the WhatsApp message - Compatible with WhatsApp Business
     const message = `🏥 APPOINTMENT BOOKING REQUEST
@@ -103,8 +63,8 @@ Phone: ${data.phone}
 ${data.age ? `Age: ${data.age} years` : ''}
 
 🏥 APPOINTMENT DETAILS:
-Department: ${deptName}
 Doctor: ${doctorName}
+Specialty: ${doctorSpecialty}
 Preferred Date: ${selectedDate}
 Preferred Time: ${selectedTime}
 
@@ -323,73 +283,52 @@ Looking forward to your response.`
                   </div>
                 </div>
 
-                {/* Department Selection */}
+                {/* Doctor Selection */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Select Department *
+                    Select Preferred Doctor *
                   </label>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                    {departments.map((dept) => (
+                  <div className="space-y-2">
+                    {doctors.map((doctor) => (
                       <button
-                        key={dept.id}
+                        key={doctor.id}
                         type="button"
-                        onClick={() => {
-                          setSelectedDepartment(dept.id)
-                          setSelectedDoctor('')
-                        }}
-                        className={`p-4 rounded-lg border-2 transition-all duration-200 ${
-                          selectedDepartment === dept.id
+                        onClick={() => setSelectedDoctor(doctor.id)}
+                        className={`w-full p-4 rounded-lg border-2 transition-all duration-200 text-left ${
+                          selectedDoctor === doctor.id
                             ? 'border-primary-600 bg-primary-50'
                             : 'border-gray-200 hover:border-gray-300'
                         }`}
                       >
-                        <div className={`w-8 h-8 bg-gradient-to-r ${dept.color} rounded-full flex items-center justify-center mx-auto mb-2`}>
-                          {React.createElement(dept.icon, { className: "w-4 h-4 text-white" })}
+                        <div className="flex items-center space-x-3">
+                          <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center overflow-hidden">
+                            {doctor.image ? (
+                              <img 
+                                src={doctor.image} 
+                                alt={doctor.name}
+                                className="w-full h-full object-cover rounded-full"
+                              />
+                            ) : (
+                              <User className="w-6 h-6 text-primary-600" />
+                            )}
+                          </div>
+                          <div className="flex-1">
+                            <p className="font-medium text-gray-800">{doctor.name}</p>
+                            <p className="text-sm text-primary-600">{doctor.specialty}</p>
+                            <p className="text-xs text-gray-500">{doctor.experience} years experience</p>
+                          </div>
                         </div>
-                        <span className="text-sm font-medium text-gray-700">
-                          {dept.name}
-                        </span>
                       </button>
                     ))}
                   </div>
-                  {!selectedDepartment && (
+                  {!selectedDoctor && (
                     <p className="text-red-600 text-sm mt-1 flex items-center">
                       <AlertCircle className="w-4 h-4 mr-1" />
-                      Please select a department
+                      Please select a doctor
                     </p>
                   )}
                 </div>
 
-                {/* Doctor Selection */}
-                {selectedDepartment && doctors[selectedDepartment] && (
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Select Doctor
-                    </label>
-                    <div className="space-y-2">
-                      {doctors[selectedDepartment].map((doctor) => (
-                        <button
-                          key={doctor.id}
-                          type="button"
-                          onClick={() => setSelectedDoctor(doctor.id)}
-                          className={`w-full p-4 rounded-lg border-2 transition-all duration-200 text-left ${
-                            selectedDoctor === doctor.id
-                              ? 'border-primary-600 bg-primary-50'
-                              : 'border-gray-200 hover:border-gray-300'
-                          }`}
-                        >
-                          <div className="flex items-center space-x-3">
-                            <Stethoscope className="w-5 h-5 text-primary-600" />
-                            <div>
-                              <p className="font-medium text-gray-800">{doctor.name}</p>
-                              <p className="text-sm text-gray-600">{doctor.title}</p>
-                            </div>
-                          </div>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
 
                 {/* Date and Time Selection */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -518,7 +457,7 @@ Looking forward to your response.`
                 Call Us
               </h3>
               <p className="text-gray-600 mb-2">
-                +1 (555) 123-4567
+                +91 88008 33411
               </p>
               <p className="text-sm text-gray-500">
                 Mon-Fri: 8AM-8PM<br />
@@ -534,7 +473,7 @@ Looking forward to your response.`
                 Email Us
               </h3>
               <p className="text-gray-600 mb-2">
-                appointments@aimanhospital.com
+                info@aimanhealth.com
               </p>
               <p className="text-sm text-gray-500">
                 We'll respond within 24 hours
@@ -549,8 +488,9 @@ Looking forward to your response.`
                 Visit Us
               </h3>
               <p className="text-gray-600 mb-2">
-                123 Healthcare Avenue<br />
-                Medical District, City 12345
+              83P , Residency Green, Jal Vihar Colony<br />
+              Sector 46, Main Sector Road<br />
+              Gurgaon, Haryana 122003
               </p>
               <p className="text-sm text-gray-500">
                 Walk-ins welcome

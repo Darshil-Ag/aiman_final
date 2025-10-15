@@ -18,11 +18,8 @@ export const useData = () => {
 }
 
 export const DataProvider = ({ children }) => {
-  console.log('DataProvider: Initializing...')
   // Initial data with some sample entries
   const [doctors, setDoctors] = useState(() => {
-    // Force clear localStorage to ensure fresh data
-    localStorage.removeItem('aimanDoctors')
     const saved = localStorage.getItem('aimanDoctors')
     const defaultDoctors = [
       { 
@@ -99,8 +96,6 @@ export const DataProvider = ({ children }) => {
       }
     ]
     
-    console.log('DataContext: Loading', defaultDoctors.length, 'doctors')
-    console.log('DataContext: Doctor IDs:', defaultDoctors.map(d => d.id))
     return saved ? JSON.parse(saved) : defaultDoctors
   })
 
@@ -145,7 +140,6 @@ export const DataProvider = ({ children }) => {
 
   // Save to localStorage whenever data changes
   useEffect(() => {
-    console.log('DataProvider: Doctors state updated:', doctors.length, 'doctors')
     localStorage.setItem('aimanDoctors', JSON.stringify(doctors))
   }, [doctors])
 
@@ -159,7 +153,10 @@ export const DataProvider = ({ children }) => {
 
   // Doctor CRUD operations
   const addDoctor = (doctor) => {
-    const newDoctor = { ...doctor, id: Date.now().toString() }
+    const newDoctor = { 
+      ...doctor, 
+      id: `doctor_${Date.now()}_${Math.random().toString(36).substr(2, 9)}` 
+    }
     setDoctors([...doctors, newDoctor])
     return newDoctor
   }
@@ -174,7 +171,11 @@ export const DataProvider = ({ children }) => {
 
   // Blog CRUD operations
   const addBlog = (blog) => {
-    const newBlog = { ...blog, id: Date.now().toString(), date: new Date().toISOString() }
+    const newBlog = { 
+      ...blog, 
+      id: `blog_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`, 
+      date: new Date().toISOString() 
+    }
     setBlogs([...blogs, newBlog])
     return newBlog
   }
@@ -189,7 +190,10 @@ export const DataProvider = ({ children }) => {
 
   // Department CRUD operations
   const addDepartment = (department) => {
-    const newDepartment = { ...department, id: Date.now().toString() }
+    const newDepartment = { 
+      ...department, 
+      id: `dept_${Date.now()}_${Math.random().toString(36).substr(2, 9)}` 
+    }
     setDepartments([...departments, newDepartment])
     return newDepartment
   }
@@ -216,8 +220,6 @@ export const DataProvider = ({ children }) => {
     updateDepartment,
     deleteDepartment
   }
-
-  console.log('DataProvider: Providing context with', doctors.length, 'doctors')
 
   return (
     <DataContext.Provider value={contextValue}>
