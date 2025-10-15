@@ -37,7 +37,7 @@ const FAQs = () => {
     {
       id: 2,
       question: 'How do I book an appointment?',
-      answer: 'You can book an appointment in several ways: 1) Call our appointment line at +1 (555) 123-4567, 2) Use our online booking system on our website, 3) Visit our hospital in person, or 4) Use our mobile app. We recommend booking in advance to secure your preferred time slot.',
+      answer: 'You can book an appointment in several ways: 1) Call our appointment line at +9188008 334411 2) Use our online booking system on our website, 3) Visit our hospital in person, or 4) Use our mobile app. We recommend booking in advance to secure your preferred time slot.',
       category: 'appointments',
       tags: ['booking', 'appointment', 'schedule']
     },
@@ -312,11 +312,11 @@ const FAQs = () => {
                 Speak directly with our support team
               </p>
               <a
-                href="tel:+15551234567"
+                href="tel:+91 88008-334411"
                 className="btn-primary inline-flex items-center"
               >
                 <Phone className="w-4 h-4 mr-2" />
-                +1 (555) 123-4567
+                +91 88008-334411
               </a>
             </motion.div>
 
@@ -337,11 +337,11 @@ const FAQs = () => {
                 Send us your questions via email
               </p>
               <a
-                href="mailto:support@aimanhospital.com"
+                href="mailto:info@aimanhealth.com"
                 className="btn-primary inline-flex items-center"
               >
                 <Mail className="w-4 h-4 mr-2" />
-                support@aimanhospital.com
+                info@aimanhealth.com
               </a>
             </motion.div>
 
@@ -362,7 +362,7 @@ const FAQs = () => {
                 Come to our hospital for in-person assistance
               </p>
               <a
-                href="/contact"
+                href="https://www.google.com/maps/place/AIMAN+-+Ataraxia+Institute+of+Mental+Health+%26+Neurosciences/@28.4385731,77.0511214,17z/data=!3m1!4b1!4m6!3m5!1s0x390d194351c6b57b:0x18d58b3633d7a68c!8m2!3d28.4385684!4d77.0536963!16s%2Fg%2F11xz8c6t7z?entry=tts&g_ep=EgoyMDI1MTAxMi4wIPu8ASoASAFQAw%3D%3D&skid=d3bffdf1-7ee6-450d-8ad0-2264aac7c73b"
                 className="btn-primary inline-flex items-center"
               >
                 <Clock className="w-4 h-4 mr-2" />

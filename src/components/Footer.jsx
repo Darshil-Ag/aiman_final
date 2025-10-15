@@ -37,9 +37,9 @@ const Footer = () => {
   ]
 
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
+    { icon: Facebook, href: 'https://www.facebook.com/775732765631920', label: 'Facebook' },
     { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
+    { icon: Instagram, href: 'https://www.instagram.com/aiman_healthcare', label: 'Instagram' },
     { icon: Linkedin, href: '#', label: 'LinkedIn' },
   ]
 
@@ -115,10 +115,10 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-primary-400 mt-1 flex-shrink-0" />
                 <div>
-                  <p className="text-gray-300 text-sm sm:text-base break-words">
+                  <a href = "https://www.google.com/maps/place/AIMAN+-+Ataraxia+Institute+of+Mental+Health+%26+Neurosciences/@28.4385731,77.0511214,17z/data=!3m1!4b1!4m6!3m5!1s0x390d194351c6b57b:0x18d58b3633d7a68c!8m2!3d28.4385684!4d77.0536963!16s%2Fg%2F11xz8c6t7z?entry=tts&g_ep=EgoyMDI1MTAxMi4wIPu8ASoASAFQAw%3D%3D&skid=d3bffdf1-7ee6-450d-8ad0-2264aac7c73b" className="text-gray-300 text-sm sm:text-base break-words hover:text-primary-400 transition-colors">
                   83P , Residency Green, Sector 46, Main Sector Road <br />
                   Gurgaon, Haryana 122003
-                  </p>
+                  </a>
                 </div>
               </div>
               <div className="flex items-center space-x-3">
