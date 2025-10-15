@@ -184,8 +184,8 @@ const About = () => {
               viewport={{ once: true }}
               className="text-center"
             >
-              <div className="w-20 h-20 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Heart className="w-10 h-10 text-accent-600" />
+              <div className="w-20 h-20 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Heart className="w-10 h-10 text-secondary-600" />
               </div>
               <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Values</h2>
               <p className="text-gray-600 leading-relaxed">
