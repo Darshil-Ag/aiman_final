@@ -35,12 +35,12 @@ const Navbar = () => {
       className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-primary-600 via-primary-500 to-secondary-600 shadow-lg transition-all duration-300"
     >
       <div className="container-custom px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20 w-full">
+        <div className="flex items-center justify-between h-20 lg:h-24 w-full">
           {/* Left: Logo */}
           <div className="flex items-center flex-shrink-0">
-            <Link to="/" className="flex items-center space-x-3">
-              <img src={newLogo} alt="AIMAN" className="w-10 h-10 rounded-lg object-cover shadow-md" />
-              <span className="text-2xl font-bold text-white drop-shadow-md">
+            <Link to="/" className="flex items-center space-x-4">
+              <img src={newLogo} alt="AIMAN" className="w-14 h-14 lg:w-16 lg:h-16 rounded-xl object-cover shadow-lg border-2 border-white/20" />
+              <span className="text-2xl lg:text-3xl font-bold text-white drop-shadow-lg">
                 AIMAN
               </span>
             </Link>
@@ -85,10 +85,10 @@ const Navbar = () => {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-lg text-white hover:bg-white/20 transition-colors duration-200"
+            className="lg:hidden p-3 rounded-lg text-white hover:bg-white/20 transition-colors duration-200"
             aria-label="Toggle menu"
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
           </button>
         </div>
 

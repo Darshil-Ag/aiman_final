@@ -64,7 +64,7 @@ const Footer = () => {
               with compassion and excellence for over two decades.
             </p>
             <p className="text-yellow-300 text-lg sm:text-xl font-semibold">
-              "Your Mental Health Matters"
+              "At AIMAN, we don’t just provide treatment. We provide hope. We provide a voice. We provide a safe space. Most importantly, we provide healing."
             </p>
             <div className="flex flex-wrap gap-3 sm:gap-4">
               {socialLinks.map((social) => (
