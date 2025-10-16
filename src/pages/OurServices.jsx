@@ -47,7 +47,7 @@ const OurServices = () => {
       ],
       availability: '24/7',
       color: 'from-red-600 to-red-500',
-      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80'
+      image: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80'
     },
     {
       id: 'opd-services',
@@ -115,7 +115,7 @@ const OurServices = () => {
       ],
       availability: 'Mon-Fri 9AM-5PM',
       color: 'from-pink-500 to-rose-500',
-      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop'
+      image: 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80'
     },
     {
       id: 'womens-mental-health',
@@ -168,7 +168,7 @@ const OurServices = () => {
       ],
       availability: 'Mon-Fri 8AM-8PM',
       color: 'from-indigo-500 to-purple-500',
-      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80'
+      image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80'
     },
     {
       id: 'sexual-wellness',
@@ -185,7 +185,7 @@ const OurServices = () => {
       ],
       availability: 'Mon-Fri 9AM-6PM',
       color: 'from-rose-500 to-pink-500',
-      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80'
+      image: 'https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80'
     },
     {
       id: 'home-visit',
@@ -220,10 +220,6 @@ const OurServices = () => {
       <section className="relative py-20 bg-gradient-to-br from-primary-500 via-primary-600 to-secondary-700 text-white">
         <div className="absolute inset-0 bg-black opacity-10"></div>
         
-        {/* Logo Background */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <img src={logo} alt="AIMAN logo" className="opacity-15 w-80 h-auto" />
-        </div>
         
         <div className="relative z-10 container-custom text-center">
           <motion.div
@@ -264,7 +260,7 @@ const OurServices = () => {
       </section>
 
       {/* Services Grid */}
-      <section className="section-padding bg-primary-50">
+      <section className="section-padding bg-primary-100">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -317,18 +313,6 @@ const OurServices = () => {
                       </div>
                     </div>
 
-                    {/* Services List */}
-                    <div className="mb-6">
-                      <h4 className="text-lg font-semibold text-gray-800 mb-3">Our Services Include:</h4>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                        {service.services.map((serviceItem, serviceIndex) => (
-                          <div key={serviceIndex} className="flex items-center space-x-2">
-                            <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
-                            <span className="text-gray-700">{serviceItem}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
 
                     {/* Service Actions */}
                     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-end gap-4">
@@ -340,7 +324,7 @@ const OurServices = () => {
                         <button className="btn-primary px-6 py-3">
                           Book Appointment
                         </button>
-                        <a href="tel:+918800833411" className="px-6 py-3 border border-primary-600 text-primary-600 rounded-lg hover:bg-primary-50 transition-colors duration-200 flex items-center space-x-2">
+                        <a href="tel:+918800833411" className="px-6 py-3 border border-primary-600 text-primary-600 rounded-lg hover:bg-primary-100 transition-colors duration-200 flex items-center space-x-2">
                           <Phone className="w-4 h-4" />
                           <span>Call Now</span>
                         </a>

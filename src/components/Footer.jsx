@@ -55,12 +55,9 @@ const Footer = () => {
               <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-lg overflow-hidden shadow-lg mx-auto mb-4">
                 <img src={newLogo} alt="AIMAN Logo" className="w-full h-full object-cover" />
               </div>
-              <div>
-                <span className="text-2xl sm:text-3xl font-bold">AIMAN</span>
-                <p className="text-xs sm:text-sm text-gray-300 mt-2">
-                  Advanced Institute of Medical and Allied Sciences Network
-                </p>
-              </div>
+              <p className="text-xs sm:text-sm text-gray-300 mt-2">
+                Advanced Institute of Medical and Allied Sciences Network
+              </p>
             </div>
             <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-4">
               Your trusted partner in healthcare, providing comprehensive medical services 
@@ -175,13 +172,13 @@ const Footer = () => {
             </p>
             <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm">
               <button
-                onClick={() => handleLinkClick('/privacy')}
+                onClick={() => handleLinkClick('/privacy-policy')}
                 className="text-gray-400 hover:text-primary-400 transition-colors duration-200 cursor-pointer"
               >
                 Privacy Policy
               </button>
               <button
-                onClick={() => handleLinkClick('/terms')}
+                onClick={() => handleLinkClick('/terms-of-service')}
                 className="text-gray-400 hover:text-primary-400 transition-colors duration-200 cursor-pointer"
               >
                 Terms of Service

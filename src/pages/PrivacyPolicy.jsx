@@ -14,10 +14,6 @@ const PrivacyPolicy = () => {
       <section className="relative py-20 bg-gradient-to-br from-primary-500 via-primary-600 to-secondary-700 text-white">
         <div className="absolute inset-0 bg-black opacity-10"></div>
         
-        {/* Logo Background */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <img src={logo} alt="AIMAN logo" className="opacity-15 w-80 h-auto" />
-        </div>
         
         <div className="relative z-10 container-custom text-center">
           <motion.div

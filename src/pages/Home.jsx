@@ -26,6 +26,7 @@ import piyush from '../photo/piyush.jpg'
 import sangeetha from '../photo/sangeetha.jpg'
 
 const Home = () => {
+
   const specialties = [
     {
       icon: Heart,
@@ -92,7 +93,11 @@ const Home = () => {
 
 
   return (
-    <div className="pt-16">
+    <div className="pt-16 relative">
+      {/* Group Photo Background - After Hero */}
+      <div className="fixed top-0 left-0 right-0 bottom-0 bg-cover bg-center bg-no-repeat pointer-events-none opacity-20 z-0" style={{ marginTop: '100vh', backgroundImage: `url(${groupPhoto})` }}>
+      </div>
+      
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -156,7 +161,7 @@ const Home = () => {
       </section>
 
       {/* Specialties Section */}
-      <section className="section-padding bg-white relative overflow-hidden">
+      <section id="specialties-section" className="section-padding bg-white relative overflow-hidden">
         {/* Logo Background */}
         <div className="fixed inset-0 flex items-center justify-center pointer-events-none opacity-15 z-0">
           <img src={logo} alt="AIMAN logo" className="w-80 h-auto" />
@@ -211,7 +216,7 @@ const Home = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="section-padding bg-primary-50 relative overflow-hidden">
+      <section className="section-padding bg-primary-100 relative overflow-hidden">
         {/* Logo Background */}
         <div className="fixed inset-0 flex items-center justify-center pointer-events-none opacity-15 z-0">
           <img src={logo} alt="AIMAN logo" className="w-80 h-auto" />
@@ -331,7 +336,7 @@ const Home = () => {
 
 
       {/* Our Services Section - Horizontal Scrolling */}
-      <section className="py-10 bg-primary-50 overflow-hidden relative">
+      <section className="py-10 bg-primary-100 overflow-hidden relative">
         {/* Logo Background */}
         <div className="fixed inset-0 flex items-center justify-center pointer-events-none opacity-15 z-0">
           <img src={logo} alt="AIMAN logo" className="w-80 h-auto" />
@@ -474,7 +479,7 @@ const Home = () => {
               >
                 <div className={`w-12 h-12 bg-gradient-to-r ${service.color} rounded-full flex items-center justify-center`}>
                   {React.createElement(service.icon, { className: "w-6 h-6 text-white" })}
-                </div>
+                    </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800">
                     {service.title}
@@ -483,28 +488,24 @@ const Home = () => {
                     Professional Care
                   </p>
                 </div>
-              </Link>
+                </Link>
             ))}
           </motion.div>
-        </div>
+          </div>
 
         <div className="container-custom text-center mt-12">
-          <Link
-            to="/our-services"
-            className="btn-outline text-lg px-8 py-3 inline-flex items-center"
-          >
-            View All Services
-            <ArrowRight className="w-5 h-5 ml-2" />
-          </Link>
+            <Link
+              to="/our-services"
+              className="btn-outline text-lg px-8 py-3 inline-flex items-center"
+            >
+              View All Services
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </Link>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="section-padding bg-gradient-to-r from-primary-600 to-secondary-700 relative overflow-hidden">
-        {/* Logo watermark in CTA section */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-5">
-          <img src={logo} alt="AIMAN logo" className="w-80 h-auto" />
-        </div>
         <div className="container-custom text-center text-white relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

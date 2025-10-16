@@ -150,7 +150,7 @@ Thank you!`
 
   if (isSubmitted) {
     return (
-      <div className="pt-16 min-h-screen bg-primary-50 flex items-center justify-center">
+      <div className="pt-16 min-h-screen bg-primary-100 flex items-center justify-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -196,10 +196,6 @@ Thank you!`
       <section className="relative py-20 bg-gradient-to-br from-primary-500 via-primary-600 to-secondary-700 text-white">
         <div className="absolute inset-0 bg-black opacity-10"></div>
         
-        {/* Logo Background */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <img src={logo} alt="AIMAN logo" className="opacity-15 w-80 h-auto" />
-        </div>
         
         <div className="relative z-10 container-custom text-center">
           <motion.div
@@ -285,7 +281,7 @@ Thank you!`
       </section>
 
       {/* Contact Form and Map */}
-      <section className="section-padding bg-primary-50">
+      <section className="section-padding bg-primary-100">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
@@ -458,7 +454,7 @@ Thank you!`
                     className="w-full h-full"
                   ></iframe>
                 </div>
-                <div className="mt-4 p-4 bg-primary-50 rounded-lg">
+                <div className="mt-4 p-4 bg-primary-100 rounded-lg">
                   <div className="flex items-center space-x-2 mb-2">
                     <Navigation className="w-5 h-5 text-primary-600" />
                     <span className="font-medium text-primary-800">Get Directions</span>
@@ -484,7 +480,7 @@ Thank you!`
                 </h3>
                 <div className="space-y-3">
                   {departments.map((dept, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 bg-primary-50 rounded-lg">
+                    <div key={index} className="flex items-center justify-between p-3 bg-primary-100 rounded-lg">
                       <span className="font-medium text-gray-800">{dept.name}</span>
                       <a
                         href={`tel:${dept.phone}`}
@@ -552,7 +548,7 @@ Thank you!`
       </section>
 
       {/* Facilities */}
-      <section className="section-padding bg-primary-50">
+      <section className="section-padding bg-primary-100">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

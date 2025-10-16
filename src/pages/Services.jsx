@@ -200,10 +200,6 @@ const Services = () => {
       <section className={`relative py-20 bg-gradient-to-br ${service.color} text-white`}>
         <div className="absolute inset-0 bg-black opacity-10"></div>
         
-        {/* Logo Background */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <img src={logo} alt="AIMAN logo" className="opacity-10 w-96 h-auto" />
-        </div>
         
         <div className="relative z-10 container-custom">
           <motion.div

@@ -108,7 +108,7 @@ Looking forward to your response.`
 
   if (isSubmitted) {
     return (
-      <div className="pt-16 min-h-screen bg-primary-50 flex items-center justify-center">
+      <div className="pt-16 min-h-screen bg-primary-100 flex items-center justify-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -150,10 +150,6 @@ Looking forward to your response.`
       <section className="relative py-20 bg-gradient-to-br from-primary-500 via-primary-600 to-secondary-700 text-white">
         <div className="absolute inset-0 bg-black opacity-10"></div>
         
-        {/* Logo Background */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <img src={logo} alt="AIMAN logo" className="opacity-15 w-80 h-auto" />
-        </div>
         
         <div className="relative z-10 container-custom text-center">
           <motion.div
@@ -173,7 +169,7 @@ Looking forward to your response.`
       </section>
 
       {/* Appointment Form */}
-      <section className="section-padding bg-primary-50">
+      <section className="section-padding bg-primary-100">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -296,12 +292,12 @@ Looking forward to your response.`
                         onClick={() => setSelectedDoctor(doctor.id)}
                         className={`w-full p-4 rounded-lg border-2 transition-all duration-200 text-left ${
                           selectedDoctor === doctor.id
-                            ? 'border-primary-600 bg-primary-50'
+                            ? 'border-primary-600 bg-primary-100'
                             : 'border-gray-200 hover:border-gray-300'
                         }`}
                       >
                         <div className="flex items-center space-x-3">
-                          <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center overflow-hidden">
+                          <div className="w-12 h-12 bg-primary-200 rounded-full flex items-center justify-center overflow-hidden">
                             {doctor.image ? (
                               <img 
                                 src={doctor.image} 
@@ -397,7 +393,7 @@ Looking forward to your response.`
                 </div>
 
                 {/* Emergency Notice */}
-                <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                <div className="bg-red-100 border border-red-200 rounded-lg p-4">
                   <div className="flex items-start space-x-3">
                     <AlertCircle className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0" />
                     <div>
