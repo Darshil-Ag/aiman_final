@@ -117,29 +117,29 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
               Your Mental Health
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-orange-300">
                 Matters
               </span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-gray-200 max-w-3xl mx-auto px-4">
               Empowering your body and mind with expert care, advanced technology, 
               and compassionate healing for over two decades.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
               <Link
                 to="/appointment"
-                className="btn-primary text-lg px-8 py-4 inline-flex items-center justify-center"
+                className="btn-primary text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 inline-flex items-center justify-center w-full sm:w-auto"
               >
-                <Calendar className="w-5 h-5 mr-2" />
+                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                 Book Appointment
               </Link>
               <Link
                 to="/our-services"
-                className="btn-outline text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-primary-600 inline-flex items-center justify-center"
+                className="btn-outline text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 border-white text-white hover:bg-white hover:text-primary-600 inline-flex items-center justify-center w-full sm:w-auto"
               >
-                <Stethoscope className="w-5 h-5 mr-2" />
+                <Stethoscope className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                 Our Services
               </Link>
             </div>
@@ -174,16 +174,16 @@ const Home = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-3 sm:mb-4">
               Our Specialties
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
               Comprehensive medical care across multiple specialties, 
               delivered with expertise and compassion.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {specialties.map((specialty, index) => (
               <motion.div
                 key={specialty.title}
@@ -196,10 +196,10 @@ const Home = () => {
                 <div className={`w-16 h-16 bg-gradient-to-r ${specialty.color} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
                   {React.createElement(specialty.icon, { className: "w-8 h-8 text-white" })}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-2">
                   {specialty.title}
                 </h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-sm sm:text-base text-gray-600 mb-4">
                   {specialty.description}
                 </p>
                 <Link
@@ -336,7 +336,7 @@ const Home = () => {
 
 
       {/* Our Services Section - Horizontal Scrolling */}
-      <section className="py-10 bg-primary-100 overflow-hidden relative">
+      <section className="py-8 sm:py-10 bg-primary-100 overflow-hidden relative">
         {/* Logo Background */}
         <div className="fixed inset-0 flex items-center justify-center pointer-events-none opacity-15 z-0">
           <img src={logo} alt="AIMAN logo" className="w-80 h-auto" />
@@ -349,10 +349,10 @@ const Home = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-3 sm:mb-4">
               Our Services
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
               Comprehensive healthcare services designed to meet all your medical needs 
               with state-of-the-art facilities and expert care.
             </p>
@@ -417,7 +417,7 @@ const Home = () => {
               <Link
                 key={`first-${index}`}
                 to={service.link}
-                className="flex-shrink-0 w-80 h-32 bg-white rounded-xl flex items-center justify-center space-x-4 px-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                className="flex-shrink-0 w-72 sm:w-80 h-28 sm:h-32 bg-white rounded-xl flex items-center justify-center space-x-3 sm:space-x-4 px-4 sm:px-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
               >
                 <div className={`w-12 h-12 bg-gradient-to-r ${service.color} rounded-full flex items-center justify-center`}>
                   {React.createElement(service.icon, { className: "w-6 h-6 text-white" })}
@@ -475,16 +475,16 @@ const Home = () => {
               <Link
                 key={`second-${index}`}
                 to={service.link}
-                className="flex-shrink-0 w-80 h-32 bg-white rounded-xl flex items-center justify-center space-x-4 px-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                className="flex-shrink-0 w-72 sm:w-80 h-28 sm:h-32 bg-white rounded-xl flex items-center justify-center space-x-3 sm:space-x-4 px-4 sm:px-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
               >
-                <div className={`w-12 h-12 bg-gradient-to-r ${service.color} rounded-full flex items-center justify-center`}>
-                  {React.createElement(service.icon, { className: "w-6 h-6 text-white" })}
+                <div className={`w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r ${service.color} rounded-full flex items-center justify-center`}>
+                  {React.createElement(service.icon, { className: "w-5 h-5 sm:w-6 sm:h-6 text-white" })}
                     </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-800">
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-800">
                     {service.title}
                   </h3>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-xs sm:text-sm text-gray-600">
                     Professional Care
                   </p>
                 </div>
@@ -513,26 +513,26 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
               Ready to Start Your Health Journey?
             </h2>
-            <p className="text-xl mb-8 text-purple-100 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-purple-100 max-w-3xl mx-auto px-4">
               Book your consultation today and take the first step towards 
               better health and wellness.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
               <Link
                 to="/appointment"
-                className="bg-white text-primary-600 hover:bg-gray-100 font-medium px-8 py-4 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl inline-flex items-center justify-center"
+                className="bg-white text-primary-600 hover:bg-gray-100 font-medium px-6 sm:px-8 py-3 sm:py-4 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl inline-flex items-center justify-center w-full sm:w-auto"
               >
-                <Calendar className="w-5 h-5 mr-2" />
+                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                 Book Your Consultation Today
               </Link>
               <Link
                 to="/contact"
-                className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-medium px-8 py-4 rounded-lg transition-all duration-200 inline-flex items-center justify-center"
+                className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-medium px-6 sm:px-8 py-3 sm:py-4 rounded-lg transition-all duration-200 inline-flex items-center justify-center w-full sm:w-auto"
               >
-                <Phone className="w-5 h-5 mr-2" />
+                <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                 Contact Us
               </Link>
             </div>
