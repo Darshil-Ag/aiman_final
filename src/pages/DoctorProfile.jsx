@@ -14,7 +14,8 @@ import {
   ArrowLeft,
   Heart,
   Stethoscope,
-  CheckCircle
+  CheckCircle,
+  FileText
 } from 'lucide-react'
 import logo from '../photo/logo.png'
 import adityaImg from '../photo/aditya.jpg'
@@ -39,23 +40,26 @@ const DoctorProfile = () => {
       qualifications: doctor.qualifications,
       email: doctor.email,
       phone: doctor.phone,
-      availability: 'Mon-Fri 9AM-5PM', // Default availability
+      availability: doctor.availability || 'Mon-Fri 9AM-5PM',
       description: doctor.description,
-      education: [
+      education: doctor.education || [
         doctor.qualifications,
         'Additional training and certifications'
       ],
-      specializations: [
+      specializations: doctor.specializations || [
         doctor.specialty,
         'General Consultation',
         'Preventive Care'
       ],
-      achievements: [
+      achievements: doctor.achievements || [
         `${doctor.experience} years of experience`,
         'Board Certified',
         'Patient-focused care'
       ],
-      languages: ['English', 'Hindi']
+      languages: doctor.languages || ['English', 'Hindi'],
+      bio: doctor.bio || doctor.description,
+      awards: doctor.awards || [],
+      publications: doctor.publications || []
     }
     return acc
   }, {})
@@ -223,6 +227,64 @@ const DoctorProfile = () => {
                   ))}
                 </ul>
               </motion.div>
+
+              {/* Awards */}
+              {doctor.awards && doctor.awards.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  viewport={{ once: true }}
+                  className="card"
+                >
+                  <h2 className="text-2xl font-bold text-gray-800 mb-4">Professional Awards</h2>
+                  <ul className="space-y-3">
+                    {doctor.awards.map((award, index) => (
+                      <li key={index} className="flex items-start space-x-3">
+                        <Award className="w-5 h-5 text-gold-600 mt-1 flex-shrink-0" />
+                        <span className="text-gray-600">{award}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              )}
+
+              {/* Publications */}
+              {doctor.publications && doctor.publications.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.5 }}
+                  viewport={{ once: true }}
+                  className="card"
+                >
+                  <h2 className="text-2xl font-bold text-gray-800 mb-4">Publications</h2>
+                  <ul className="space-y-3">
+                    {doctor.publications.map((publication, index) => (
+                      <li key={index} className="flex items-start space-x-3">
+                        <FileText className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
+                        <span className="text-gray-600">{publication}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              )}
+
+              {/* Bio */}
+              {doctor.bio && doctor.bio !== doctor.description && (
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.6 }}
+                  viewport={{ once: true }}
+                  className="card"
+                >
+                  <h2 className="text-2xl font-bold text-gray-800 mb-4">Detailed Biography</h2>
+                  <p className="text-gray-600 leading-relaxed">
+                    {doctor.bio}
+                  </p>
+                </motion.div>
+              )}
             </div>
 
             {/* Sidebar */}
@@ -237,12 +299,6 @@ const DoctorProfile = () => {
               >
                 <h3 className="text-xl font-bold text-gray-800 mb-4">Contact Information</h3>
                 <div className="space-y-4">
-                  <div className="flex items-center space-x-3">
-                    <Phone className="w-5 h-5 text-primary-600" />
-                    <a href={`tel:${doctor.phone}`} className="text-gray-600 hover:text-primary-600">
-                      {doctor.phone}
-                    </a>
-                  </div>
                   <div className="flex items-center space-x-3">
                     <Mail className="w-5 h-5 text-primary-600" />
                     <a href={`mailto:${doctor.email}`} className="text-gray-600 hover:text-primary-600">
@@ -293,13 +349,6 @@ const DoctorProfile = () => {
                   >
                     <Calendar className="w-4 h-4 mr-2" />
                     Book Appointment
-                  </a>
-                  <a
-                    href={`tel:${doctor.phone}`}
-                    className="w-full btn-outline flex items-center justify-center"
-                  >
-                    <Phone className="w-4 h-4 mr-2" />
-                    Call Now
                   </a>
                 </div>
               </motion.div>

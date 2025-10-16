@@ -28,6 +28,7 @@ const AdminDoctors = () => {
   const { doctors, addDoctor, updateDoctor, deleteDoctor } = useData()
   const navigate = useNavigate()
   
+  
   const [searchTerm, setSearchTerm] = useState('')
   const [showModal, setShowModal] = useState(false)
   const [editingDoctor, setEditingDoctor] = useState(null)
@@ -43,7 +44,15 @@ const AdminDoctors = () => {
     qualifications: '',
     description: '',
     image: '',
-    available: true
+    available: true,
+    availability: 'Mon-Fri 9AM-5PM',
+    education: [],
+    specializations: [],
+    achievements: [],
+    languages: ['English', 'Hindi'],
+    bio: '',
+    awards: [],
+    publications: []
   })
 
   useEffect(() => {
@@ -75,7 +84,15 @@ const AdminDoctors = () => {
         qualifications: doctor.qualifications,
         description: doctor.description,
         image: doctor.image,
-        available: doctor.available
+        available: doctor.available,
+        availability: doctor.availability || 'Mon-Fri 9AM-5PM',
+        education: doctor.education || [],
+        specializations: doctor.specializations || [],
+        achievements: doctor.achievements || [],
+        languages: doctor.languages || ['English', 'Hindi'],
+        bio: doctor.bio || '',
+        awards: doctor.awards || [],
+        publications: doctor.publications || []
       })
     } else {
       setEditingDoctor(null)
@@ -88,7 +105,15 @@ const AdminDoctors = () => {
         qualifications: '',
         description: '',
         image: '',
-        available: true
+        available: true,
+        availability: 'Mon-Fri 9AM-5PM',
+        education: [],
+        specializations: [],
+        achievements: [],
+        languages: ['English', 'Hindi'],
+        bio: '',
+        awards: [],
+        publications: []
       })
     }
     setShowModal(true)
@@ -468,6 +493,127 @@ const AdminDoctors = () => {
                     <label htmlFor="available" className="text-sm font-medium text-gray-700">
                       Available for appointments
                     </label>
+                  </div>
+
+                  {/* Availability */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <Clock className="w-4 h-4 inline mr-1" />
+                      Availability Schedule
+                    </label>
+                    <input
+                      type="text"
+                      name="availability"
+                      value={formData.availability}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                      placeholder="Mon-Fri 9AM-5PM"
+                    />
+                  </div>
+
+                  {/* Bio */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Bio
+                    </label>
+                    <textarea
+                      name="bio"
+                      value={formData.bio}
+                      onChange={handleInputChange}
+                      rows="3"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                      placeholder="Detailed biography of the doctor..."
+                    />
+                  </div>
+
+                  {/* Education */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Education (one per line)
+                    </label>
+                    <textarea
+                      name="education"
+                      value={formData.education.join('\n')}
+                      onChange={(e) => setFormData({...formData, education: e.target.value.split('\n').filter(item => item.trim())})}
+                      rows="3"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                      placeholder="MD, DM Cardiology, FACC&#10;Fellowship in Interventional Cardiology"
+                    />
+                  </div>
+
+                  {/* Specializations */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Specializations (one per line)
+                    </label>
+                    <textarea
+                      name="specializations"
+                      value={formData.specializations.join('\n')}
+                      onChange={(e) => setFormData({...formData, specializations: e.target.value.split('\n').filter(item => item.trim())})}
+                      rows="3"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                      placeholder="Interventional Cardiology&#10;Preventive Cardiology&#10;Cardiac Rehabilitation"
+                    />
+                  </div>
+
+                  {/* Achievements */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Achievements (one per line)
+                    </label>
+                    <textarea
+                      name="achievements"
+                      value={formData.achievements.join('\n')}
+                      onChange={(e) => setFormData({...formData, achievements: e.target.value.split('\n').filter(item => item.trim())})}
+                      rows="3"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                      placeholder="15+ years of experience&#10;Board Certified Cardiologist&#10;Performed 5000+ successful procedures"
+                    />
+                  </div>
+
+                  {/* Languages */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Languages (comma separated)
+                    </label>
+                    <input
+                      type="text"
+                      name="languages"
+                      value={formData.languages.join(', ')}
+                      onChange={(e) => setFormData({...formData, languages: e.target.value.split(',').map(item => item.trim()).filter(item => item)})}
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                      placeholder="English, Hindi, Spanish"
+                    />
+                  </div>
+
+                  {/* Awards */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Awards (one per line)
+                    </label>
+                    <textarea
+                      name="awards"
+                      value={formData.awards.join('\n')}
+                      onChange={(e) => setFormData({...formData, awards: e.target.value.split('\n').filter(item => item.trim())})}
+                      rows="3"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                      placeholder="Best Cardiologist Award 2023&#10;Excellence in Patient Care&#10;Innovation in Medical Technology"
+                    />
+                  </div>
+
+                  {/* Publications */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Publications (one per line)
+                    </label>
+                    <textarea
+                      name="publications"
+                      value={formData.publications.join('\n')}
+                      onChange={(e) => setFormData({...formData, publications: e.target.value.split('\n').filter(item => item.trim())})}
+                      rows="3"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                      placeholder="Advanced Techniques in Interventional Cardiology&#10;Preventive Cardiology: A Comprehensive Guide&#10;Cardiac Rehabilitation Protocols"
+                    />
                   </div>
                 </div>
 

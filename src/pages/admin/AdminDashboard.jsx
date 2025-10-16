@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAdmin } from '../../contexts/AdminContext'
@@ -16,9 +16,15 @@ import {
 } from 'lucide-react'
 
 const AdminDashboard = () => {
-  const { isAuthenticated, logout, adminData } = useAdmin()
-  const { doctors, blogs, departments } = useData()
+  const { isAuthenticated, logout, adminData, changePassword } = useAdmin()
+  const { doctors, blogs, departments, newsletterSubscribers, resetDoctorsToDefault } = useData()
   const navigate = useNavigate()
+  const [showPasswordChange, setShowPasswordChange] = useState(false)
+  const [passwordForm, setPasswordForm] = useState({
+    currentPassword: '',
+    newPassword: '',
+    confirmPassword: ''
+  })
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -29,6 +35,27 @@ const AdminDashboard = () => {
   const handleLogout = () => {
     logout()
     navigate('/admin/login')
+  }
+
+  const handlePasswordChange = (e) => {
+    e.preventDefault()
+    if (passwordForm.newPassword !== passwordForm.confirmPassword) {
+      alert('New passwords do not match')
+      return
+    }
+    if (passwordForm.newPassword.length < 6) {
+      alert('New password must be at least 6 characters long')
+      return
+    }
+    
+    const result = changePassword(passwordForm.currentPassword, passwordForm.newPassword)
+    if (result.success) {
+      alert('Password changed successfully!')
+      setPasswordForm({ currentPassword: '', newPassword: '', confirmPassword: '' })
+      setShowPasswordChange(false)
+    } else {
+      alert(result.error)
+    }
   }
 
   const stats = [
@@ -54,9 +81,9 @@ const AdminDashboard = () => {
       link: '/admin/departments'
     },
     {
-      title: 'Active Appointments',
-      value: '12',
-      icon: Calendar,
+      title: 'Newsletter Subscribers',
+      value: newsletterSubscribers.length,
+      icon: MessageSquare,
       color: 'from-orange-500 to-orange-600',
       link: '#'
     }
@@ -87,7 +114,11 @@ const AdminDashboard = () => {
               <button className="p-2 text-gray-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-colors duration-200">
                 <Bell className="w-5 h-5" />
               </button>
-              <button className="p-2 text-gray-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-colors duration-200">
+              <button 
+                onClick={() => setShowPasswordChange(!showPasswordChange)}
+                className="p-2 text-gray-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-colors duration-200"
+                title="Change Password"
+              >
                 <Settings className="w-5 h-5" />
               </button>
               <button
@@ -101,6 +132,65 @@ const AdminDashboard = () => {
           </div>
         </div>
       </header>
+
+      {/* Password Change Form */}
+      {showPasswordChange && (
+        <div className="bg-blue-50 border-l-4 border-blue-600 p-6 mx-4 mt-4 rounded-lg">
+          <h3 className="text-lg font-semibold text-blue-800 mb-4">Change Admin Password</h3>
+          <form onSubmit={handlePasswordChange} className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Current Password</label>
+              <input
+                type="password"
+                value={passwordForm.currentPassword}
+                onChange={(e) => setPasswordForm({...passwordForm, currentPassword: e.target.value})}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">New Password</label>
+              <input
+                type="password"
+                value={passwordForm.newPassword}
+                onChange={(e) => setPasswordForm({...passwordForm, newPassword: e.target.value})}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                required
+                minLength={6}
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Confirm New Password</label>
+              <input
+                type="password"
+                value={passwordForm.confirmPassword}
+                onChange={(e) => setPasswordForm({...passwordForm, confirmPassword: e.target.value})}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                required
+                minLength={6}
+              />
+            </div>
+            <div className="flex space-x-3">
+              <button
+                type="submit"
+                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors duration-200"
+              >
+                Change Password
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setShowPasswordChange(false)
+                  setPasswordForm({ currentPassword: '', newPassword: '', confirmPassword: '' })
+                }}
+                className="px-4 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-lg transition-colors duration-200"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -232,10 +322,27 @@ const AdminDashboard = () => {
                 <span className="font-semibold text-gray-800">{departments.length}</span>
               </div>
               <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                <span className="text-gray-600">Newsletter Subscribers</span>
+                <span className="font-semibold text-gray-800">{newsletterSubscribers.length}</span>
+              </div>
+              <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                 <span className="text-gray-600">Last Login</span>
                 <span className="font-semibold text-gray-800">
                   {new Date(adminData?.loginTime).toLocaleTimeString()}
                 </span>
+              </div>
+              <div className="mt-4">
+                <button
+                  onClick={() => {
+                    if (confirm('Are you sure you want to reset all doctors to default? This will remove any custom doctors you may have added.')) {
+                      resetDoctorsToDefault()
+                      alert('Doctors have been reset to default. All 6 doctors should now be visible.')
+                    }
+                  }}
+                  className="w-full bg-red-500 hover:bg-red-600 text-white font-medium px-4 py-2 rounded-lg transition-colors duration-200"
+                >
+                  Reset Doctors to Default
+                </button>
               </div>
             </div>
           </motion.div>

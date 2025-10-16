@@ -16,6 +16,9 @@ import Contact from './pages/Contact'
 import Services from './pages/Services'
 import ServiceDetail from './pages/ServiceDetail'
 import DoctorProfile from './pages/DoctorProfile'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import TermsOfService from './pages/TermsOfService'
+import Sitemap from './pages/Sitemap'
 import AdminLogin from './pages/admin/AdminLogin'
 import AdminDashboard from './pages/admin/AdminDashboard'
 import AdminDoctors from './pages/admin/AdminDoctors'
@@ -129,6 +132,42 @@ function App() {
                 <Navbar />
                 <motion.main initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
                   <DoctorProfile />
+                </motion.main>
+                <Footer />
+                <WhatsAppButton />
+              </>
+            } />
+
+            {/* Privacy Policy */}
+            <Route path="/privacy-policy" element={
+              <>
+                <Navbar />
+                <motion.main initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+                  <PrivacyPolicy />
+                </motion.main>
+                <Footer />
+                <WhatsAppButton />
+              </>
+            } />
+
+            {/* Terms of Service */}
+            <Route path="/terms-of-service" element={
+              <>
+                <Navbar />
+                <motion.main initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+                  <TermsOfService />
+                </motion.main>
+                <Footer />
+                <WhatsAppButton />
+              </>
+            } />
+
+            {/* Sitemap */}
+            <Route path="/sitemap" element={
+              <>
+                <Navbar />
+                <motion.main initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+                  <Sitemap />
                 </motion.main>
                 <Footer />
                 <WhatsAppButton />

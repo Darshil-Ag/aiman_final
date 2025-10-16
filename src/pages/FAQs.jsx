@@ -8,7 +8,8 @@ import {
   Mail,
   Clock,
   Search,
-  Filter
+  Filter,
+  AlertTriangle
 } from 'lucide-react'
 import logo from '../photo/logo.png'
 
@@ -93,7 +94,7 @@ const FAQs = () => {
     {
       id: 10,
       question: 'How do I contact a specific doctor?',
-      answer: 'You can contact a specific doctor through our main switchboard at +1 (555) 123-4567, or through their direct extension if you have it. You can also send a message through our patient portal or email them directly if you have their contact information.',
+      answer: 'You can contact a specific doctor through our main switchboard at +91 88008 33411, or through their direct extension if you have it. You can also send a message through our patient portal or email them directly if you have their contact information.',
       category: 'general',
       tags: ['contact', 'doctor', 'communication']
     },
@@ -126,7 +127,11 @@ const FAQs = () => {
   }
 
   return (
-    <div className="pt-16">
+    <div className="pt-16 relative">
+      {/* Logo Background Watermark */}
+      <div className="fixed top-16 left-0 right-0 bottom-0 flex items-center justify-center pointer-events-none opacity-10 z-0">
+        <img src={logo} alt="AIMAN logo" className="w-96 h-auto" />
+      </div>
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-br from-primary-500 via-primary-600 to-secondary-700 text-white">
         <div className="absolute inset-0 bg-black opacity-10"></div>
@@ -382,9 +387,6 @@ const FAQs = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Phone className="w-10 h-10" />
-            </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Emergency Questions?
             </h2>

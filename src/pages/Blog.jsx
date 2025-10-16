@@ -22,9 +22,11 @@ import {
 import logo from '../photo/logo.png'
 
 const Blog = () => {
-  const { blogs } = useData()
+  const { blogs, addNewsletterSubscriber } = useData()
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [searchTerm, setSearchTerm] = useState('')
+  const [email, setEmail] = useState('')
+  const [isSubscribed, setIsSubscribed] = useState(false)
 
   // Get unique categories from blogs
   const categories = [
@@ -60,8 +62,22 @@ const Blog = () => {
     })
   }
 
+  const handleNewsletterSubscription = (e) => {
+    e.preventDefault()
+    if (email && email.includes('@')) {
+      addNewsletterSubscriber(email)
+      setIsSubscribed(true)
+      setEmail('')
+      setTimeout(() => setIsSubscribed(false), 3000)
+    }
+  }
+
   return (
-    <div className="pt-16">
+    <div className="pt-16 relative">
+      {/* Logo Background Watermark */}
+      <div className="fixed top-16 left-0 right-0 bottom-0 flex items-center justify-center pointer-events-none opacity-10 z-0">
+        <img src={logo} alt="AIMAN logo" className="w-96 h-auto" />
+      </div>
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-br from-primary-500 via-primary-600 to-secondary-700 text-white">
         <div className="absolute inset-0 bg-black opacity-10"></div>
@@ -310,16 +326,29 @@ const Blog = () => {
               Subscribe to our newsletter and get the latest health tips, 
               medical insights, and wellness advice delivered to your inbox.
             </p>
-            <div className="max-w-md mx-auto flex gap-4">
-              <input
-                type="email"
-                placeholder="Enter your email address"
-                className="flex-1 px-4 py-3 rounded-lg text-gray-800 focus:ring-2 focus:ring-white focus:outline-none"
-              />
-              <button className="bg-white text-primary-600 hover:bg-gray-100 font-medium px-6 py-3 rounded-lg transition-colors duration-200">
-                Subscribe
-              </button>
-            </div>
+            <form onSubmit={handleNewsletterSubscription} className="max-w-md mx-auto">
+              <div className="flex gap-4">
+                <input
+                  type="email"
+                  placeholder="Enter your email address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="flex-1 px-4 py-3 rounded-lg text-gray-800 focus:ring-2 focus:ring-white focus:outline-none"
+                  required
+                />
+                <button 
+                  type="submit"
+                  className="bg-white text-primary-600 hover:bg-gray-100 font-medium px-6 py-3 rounded-lg transition-colors duration-200"
+                >
+                  {isSubscribed ? 'Subscribed!' : 'Subscribe'}
+                </button>
+              </div>
+              {isSubscribed && (
+                <p className="text-green-200 text-sm mt-2">
+                  Thank you for subscribing to our newsletter!
+                </p>
+              )}
+            </form>
           </motion.div>
         </div>
       </section>

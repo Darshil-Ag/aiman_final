@@ -49,8 +49,13 @@ const OurExperts = () => {
     return matchesSpecialty && matchesSearch
   })
 
+
   return (
-    <div className="pt-16">
+    <div className="pt-16 relative">
+      {/* Logo Background Watermark */}
+      <div className="fixed top-16 left-0 right-0 bottom-0 flex items-center justify-center pointer-events-none opacity-10 z-0">
+        <img src={logo} alt="AIMAN logo" className="w-96 h-auto" />
+      </div>
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-br from-primary-500 via-primary-600 to-secondary-700 text-white">
         <div className="absolute inset-0 bg-black opacity-10"></div>
@@ -131,7 +136,7 @@ const OurExperts = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredDoctors.map((doctor, index) => (
               <motion.div
                 key={doctor.id}
@@ -179,10 +184,6 @@ const OurExperts = () => {
                   <div className="flex items-center space-x-2">
                     <Mail className="w-4 h-4" />
                     <span className="truncate">{doctor.email}</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Phone className="w-4 h-4" />
-                    <span>{doctor.phone}</span>
                   </div>
                 </div>
 

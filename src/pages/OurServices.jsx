@@ -15,7 +15,8 @@ import {
   Phone,
   CheckCircle,
   MapPin,
-  Building
+  Building,
+  AlertTriangle
 } from 'lucide-react'
 import logo from '../photo/logo.png'
 
@@ -36,7 +37,7 @@ const OurServices = () => {
       name: '24/7 Emergency Mental Health Services',
       category: 'emergency',
       icon: Zap,
-      description: 'Round-the-clock emergency mental health services providing immediate crisis intervention and support.',
+      description: "Mental health crises can happen at any time. Our emergency services are available round the clock to ensure that help is always within reach. Whether it's a severe panic attack, suicidal ideation, psychotic episode, or sudden neurological complication, our specialized team responds promptly with care, sensitivity, and professionalism.",
       services: [
         'Crisis Intervention',
         'Emergency Psychiatric Care',
@@ -44,17 +45,16 @@ const OurServices = () => {
         'Mental Health Triage',
         'Emergency Counseling'
       ],
-      doctors: 8,
       availability: '24/7',
       color: 'from-red-600 to-red-500',
-      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop'
+      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80'
     },
     {
       id: 'opd-services',
       name: 'OPD (Outpatient Department) Services',
       category: 'medical',
       icon: Users,
-      description: 'Comprehensive outpatient mental health services for regular consultations and follow-ups.',
+      description: 'Our outpatient services provide accessible consultations for individuals seeking psychiatric, neurological, or psychological guidance without hospitalization. Regular follow-ups, counseling sessions, and medication management ensure that progress is monitored and maintained.',
       services: [
         'Initial Consultations',
         'Follow-up Appointments',
@@ -62,17 +62,16 @@ const OurServices = () => {
         'Therapy Sessions',
         'Assessment Services'
       ],
-      doctors: 6,
       availability: 'Mon-Fri 9AM-6PM',
       color: 'from-blue-500 to-cyan-500',
-      image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop'
+      image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80'
     },
     {
       id: 'ipd-services',
       name: 'IPD (Inpatient Department) Services',
       category: 'medical',
       icon: Building,
-      description: 'Inpatient mental health services providing intensive care and treatment in a safe environment.',
+      description: 'For individuals requiring intensive monitoring, AIMAN provides safe and comfortable inpatient care. Our facilities are designed to be therapeutic and calming, with professional staff available 24/7. Patients benefit from structured routines, therapeutic interventions, and compassionate support throughout their stay.',
       services: [
         'Inpatient Psychiatric Care',
         'Intensive Therapy Programs',
@@ -80,17 +79,16 @@ const OurServices = () => {
         'Crisis Management',
         'Rehabilitation Support'
       ],
-      doctors: 10,
       availability: '24/7',
       color: 'from-green-500 to-teal-500',
-      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop'
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80'
     },
     {
       id: 'deaddiction-rehab',
       name: 'De-addiction and Rehabilitation Services',
       category: 'specialty',
       icon: Shield,
-      description: 'Specialized services for substance abuse treatment and comprehensive rehabilitation programs.',
+      description: 'Addiction is not just a physical dependency but also a psychological challenge. Our comprehensive de-addiction programs include medical detoxification, individual and group therapy, relapse prevention strategies, and family counseling. We aim to empower individuals to reclaim control over their lives and restore their sense of dignity.',
       services: [
         'Detoxification Programs',
         'Individual Counseling',
@@ -98,17 +96,16 @@ const OurServices = () => {
         'Family Support',
         'Aftercare Planning'
       ],
-      doctors: 5,
       availability: 'Mon-Sat 8AM-8PM',
       color: 'from-purple-500 to-indigo-500',
-      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop'
+      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80'
     },
     {
       id: 'child-adolescent',
       name: 'Child and Adolescent Mental Health Services',
       category: 'specialty',
       icon: Baby,
-      description: 'Specialized mental health services tailored for children and adolescents with age-appropriate care.',
+      description: 'Children and adolescents face unique challenges in today’s fast-paced world, from academic stress to social pressures and emotional struggles. At AIMAN, our child psychiatry and psychology team specializes in addressing developmental, behavioral, and emotional concerns. Services include ADHD management, autism support, learning disability interventions, and therapy for anxiety and depression in children.',
       services: [
         'Child Psychology',
         'Adolescent Counseling',
@@ -116,7 +113,6 @@ const OurServices = () => {
         'Behavioral Interventions',
         'School Support Services'
       ],
-      doctors: 4,
       availability: 'Mon-Fri 9AM-5PM',
       color: 'from-pink-500 to-rose-500',
       image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop'
@@ -126,7 +122,7 @@ const OurServices = () => {
       name: 'Women\'s Mental Health Services',
       category: 'specialty',
       icon: Heart,
-      description: 'Comprehensive mental health services addressing the unique needs of women across all life stages.',
+      description: 'Women often experience specific mental health issues related to hormonal changes, pregnancy, postpartum challenges, and social stressors. Our women-focused services address conditions like postpartum depression, anxiety, trauma, and emotional burnout with specialized care and support.',
       services: [
         'Prenatal Mental Health',
         'Postpartum Support',
@@ -134,17 +130,16 @@ const OurServices = () => {
         'Trauma Therapy',
         'Hormonal Mental Health'
       ],
-      doctors: 3,
       availability: 'Mon-Fri 9AM-6PM',
       color: 'from-pink-600 to-purple-600',
-      image: 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop'
+      image: 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80'
     },
     {
       id: 'geriatric-mental-health',
       name: 'Geriatric Mental Health Services',
       category: 'specialty',
       icon: Users,
-      description: 'Specialized mental health care for elderly patients addressing age-related mental health challenges.',
+      description: 'As individuals age, they may face neurological disorders such as dementia, Alzheimer’s, or Parkinson’s, alongside emotional struggles like loneliness or depression. AIMAN provides tailored care for elderly patients, emphasizing dignity, comfort, and family involvement.',
       services: [
         'Dementia Care',
         'Depression Treatment',
@@ -152,10 +147,9 @@ const OurServices = () => {
         'Memory Care',
         'Family Support'
       ],
-      doctors: 3,
       availability: 'Mon-Fri 9AM-5PM',
       color: 'from-gray-500 to-blue-500',
-      image: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&h=300&fit=crop'
+      image: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80'
     },
     {
       id: 'clinical-psychology',
@@ -172,17 +166,16 @@ const OurServices = () => {
         'Psycho-oncology Support',
         'Stress and Anger Management'
       ],
-      doctors: 7,
       availability: 'Mon-Fri 8AM-8PM',
       color: 'from-indigo-500 to-purple-500',
-      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop'
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80'
     },
     {
       id: 'sexual-wellness',
       name: 'Sexual Wellness Services',
       category: 'specialty',
       icon: Heart,
-      description: 'Comprehensive sexual wellness and mental health services addressing intimate relationship and sexual health concerns.',
+      description: 'Sexual wellness is about maintaining a healthy and satisfying sexual life, understanding your body, and fostering safe, respectful relationships. It includes education, counseling, and support to address concerns, improve intimacy, and promote overall physical and mental well-being.',
       services: [
         'Sexual Health Counseling',
         'Relationship Therapy',
@@ -190,17 +183,16 @@ const OurServices = () => {
         'Sexual Trauma Support',
         'Couples Counseling'
       ],
-      doctors: 2,
       availability: 'Mon-Fri 9AM-6PM',
       color: 'from-rose-500 to-pink-500',
-      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop'
+      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80'
     },
     {
       id: 'home-visit',
       name: 'Home Visit Services',
       category: 'specialty',
       icon: MapPin,
-      description: 'Convenient home-based mental health services bringing professional care directly to patients in their comfort zone.',
+      description: 'Home visit mental health services bring professional care directly to you, ensuring privacy, comfort, and personalized support. From counseling and therapy to follow-ups and crisis intervention, our experts make mental well-being accessible at your doorstep because emotional health is as important as physical health.',
       services: [
         'Home-based Therapy',
         'Family Counseling',
@@ -208,10 +200,9 @@ const OurServices = () => {
         'Crisis Intervention',
         'Caregiver Support'
       ],
-      doctors: 4,
       availability: 'Mon-Sat 9AM-6PM',
       color: 'from-green-600 to-teal-600',
-      image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop'
+      image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80'
     }
   ]
 
@@ -220,7 +211,11 @@ const OurServices = () => {
     : services.filter(service => service.category === selectedCategory)
 
   return (
-    <div className="pt-16">
+    <div className="pt-16 relative">
+      {/* Logo Background Watermark */}
+      <div className="fixed top-16 left-0 right-0 bottom-0 flex items-center justify-center pointer-events-none opacity-10 z-0">
+        <img src={logo} alt="AIMAN logo" className="w-96 h-auto" />
+      </div>
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-br from-primary-500 via-primary-600 to-secondary-700 text-white">
         <div className="absolute inset-0 bg-black opacity-10"></div>
@@ -335,18 +330,8 @@ const OurServices = () => {
                       </div>
                     </div>
 
-                    {/* Service Stats and Actions */}
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                      <div className="flex flex-wrap gap-6 text-sm text-gray-600">
-                        <div className="flex items-center space-x-2">
-                          <Users className="w-4 h-4" />
-                          <span>{service.doctors} Expert{service.doctors > 1 ? 's' : ''}</span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <Clock className="w-4 h-4" />
-                          <span>{service.availability}</span>
-                        </div>
-                      </div>
+                    {/* Service Actions */}
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-end gap-4">
 
                       <div className="flex space-x-3">
                         <a href={`/services/${service.id}`} className="btn-outline px-6 py-3 flex items-center space-x-2">
@@ -355,10 +340,10 @@ const OurServices = () => {
                         <button className="btn-primary px-6 py-3">
                           Book Appointment
                         </button>
-                        <button className="px-6 py-3 border border-primary-600 text-primary-600 rounded-lg hover:bg-primary-50 transition-colors duration-200 flex items-center space-x-2">
+                        <a href="tel:+918800833411" className="px-6 py-3 border border-primary-600 text-primary-600 rounded-lg hover:bg-primary-50 transition-colors duration-200 flex items-center space-x-2">
                           <Phone className="w-4 h-4" />
                           <span>Call Now</span>
-                        </button>
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -378,9 +363,6 @@ const OurServices = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Zap className="w-10 h-10" />
-            </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Mental Health Emergency Services Available 24/7
             </h2>
@@ -390,11 +372,11 @@ const OurServices = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:108"
+                href="tel:+918800833411"
                 className="bg-white text-red-600 hover:bg-gray-100 font-medium px-8 py-4 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl inline-flex items-center justify-center"
               >
                 <Phone className="w-5 h-5 mr-2" />
-                Call Emergency: 108
+                Call Emergency: +91 88008 33411
               </a>
               <a
                 href="/appointment"

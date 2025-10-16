@@ -8,7 +8,6 @@ import {
   MapPin, 
   Clock, 
   Award, 
-  Users, 
   Star,
   ArrowLeft,
   Heart,
@@ -41,10 +40,9 @@ const ServiceDetail = () => {
         'Mental Health Triage',
         'Emergency Counseling'
       ],
-      doctors: 8,
       availability: '24/7',
-      phone: '+1 (555) 123-4567',
-      email: 'emergency@aimanhospital.com',
+      phone: '+91 88008 33411',
+      email: 'info@aimanhealth.com',
       features: [
         'Immediate crisis response',
         'Specialized emergency protocols',
@@ -62,7 +60,7 @@ const ServiceDetail = () => {
     },
     'opd-services': {
       name: 'OPD (Outpatient Department) Services',
-      icon: Users,
+      icon: Heart,
       color: 'from-blue-500 to-cyan-500',
       image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=400&fit=crop',
       description: 'Comprehensive outpatient mental health services for regular consultations and follow-ups.',
@@ -74,10 +72,9 @@ const ServiceDetail = () => {
         'Therapy Sessions',
         'Assessment Services'
       ],
-      doctors: 6,
       availability: 'Mon-Fri 9AM-6PM',
-      phone: '+1 (555) 123-4568',
-      email: 'opd@aimanhospital.com',
+      phone: '+91 88008 33411',
+      email: 'info@aimanhealth.com',
       features: [
         'Flexible appointment scheduling',
         'Comprehensive assessments',
@@ -107,10 +104,9 @@ const ServiceDetail = () => {
         'Crisis Management',
         'Rehabilitation Support'
       ],
-      doctors: 10,
       availability: '24/7',
-      phone: '+1 (555) 123-4569',
-      email: 'ipd@aimanhospital.com',
+      phone: '+91 88008 33411',
+      email: 'info@aimanhealth.com',
       features: [
         'Secure therapeutic environment',
         '24/7 medical supervision',
@@ -140,10 +136,9 @@ const ServiceDetail = () => {
         'Family Support',
         'Aftercare Planning'
       ],
-      doctors: 5,
       availability: 'Mon-Sat 8AM-8PM',
-      phone: '+1 (555) 123-4570',
-      email: 'rehab@aimanhospital.com',
+      phone: '+91 88008 33411',
+      email: 'info@aimanhealth.com',
       features: [
         'Medical detoxification',
         'Individual and group therapy',
@@ -173,10 +168,9 @@ const ServiceDetail = () => {
         'Behavioral Interventions',
         'School Support Services'
       ],
-      doctors: 4,
       availability: 'Mon-Fri 9AM-5PM',
-      phone: '+1 (555) 123-4571',
-      email: 'child@aimanhospital.com',
+      phone: '+91 88008 33411',
+      email: 'info@aimanhealth.com',
       features: [
         'Age-appropriate therapy',
         'Family involvement',
@@ -206,10 +200,9 @@ const ServiceDetail = () => {
         'Trauma Therapy',
         'Hormonal Mental Health'
       ],
-      doctors: 3,
       availability: 'Mon-Fri 9AM-6PM',
-      phone: '+1 (555) 123-4572',
-      email: 'women@aimanhospital.com',
+      phone: '+91 88008 33411',
+      email: 'info@aimanhealth.com',
       features: [
         'Gender-sensitive care',
         'Hormonal assessment',
@@ -227,7 +220,7 @@ const ServiceDetail = () => {
     },
     'geriatric-mental-health': {
       name: 'Geriatric Mental Health Services',
-      icon: Users,
+      icon: Shield,
       color: 'from-gray-500 to-blue-500',
       image: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=800&h=400&fit=crop',
       description: 'Specialized mental health care for elderly patients addressing age-related mental health challenges.',
@@ -239,10 +232,9 @@ const ServiceDetail = () => {
         'Memory Care',
         'Family Support'
       ],
-      doctors: 3,
       availability: 'Mon-Fri 9AM-5PM',
-      phone: '+1 (555) 123-4573',
-      email: 'geriatric@aimanhospital.com',
+      phone: '+91 88008 33411',
+      email: 'info@aimanhealth.com',
       features: [
         'Dementia assessment',
         'Memory care programs',
@@ -274,10 +266,9 @@ const ServiceDetail = () => {
         'Psycho-oncology Support',
         'Stress and Anger Management'
       ],
-      doctors: 7,
       availability: 'Mon-Fri 8AM-8PM',
-      phone: '+1 (555) 123-4574',
-      email: 'psychology@aimanhospital.com',
+      phone: '+91 88008 33411',
+      email: 'info@aimanhealth.com',
       features: [
         'Evidence-based therapies',
         'Individual and group sessions',
@@ -307,10 +298,9 @@ const ServiceDetail = () => {
         'Sexual Trauma Support',
         'Couples Counseling'
       ],
-      doctors: 2,
       availability: 'Mon-Fri 9AM-6PM',
-      phone: '+1 (555) 123-4575',
-      email: 'sexualwellness@aimanhospital.com',
+      phone: '+91 88008 33411',
+      email: 'info@aimanhealth.com',
       features: [
         'Confidential counseling',
         'Couples therapy',
@@ -340,10 +330,9 @@ const ServiceDetail = () => {
         'Crisis Intervention',
         'Caregiver Support'
       ],
-      doctors: 4,
       availability: 'Mon-Sat 9AM-6PM',
-      phone: '+1 (555) 123-4576',
-      email: 'homevisit@aimanhospital.com',
+      phone: '+91 88008 33411',
+      email: 'info@aimanhealth.com',
       features: [
         'Convenient home visits',
         'Family involvement',
@@ -414,10 +403,6 @@ const ServiceDetail = () => {
                 
                 {/* Quick Stats */}
                 <div className="flex flex-wrap gap-6 justify-center lg:justify-start">
-                  <div className="flex items-center space-x-2">
-                    <Users className="w-5 h-5" />
-                    <span>{service.doctors} Expert{service.doctors > 1 ? 's' : ''}</span>
-                  </div>
                   <div className="flex items-center space-x-2">
                     <Clock className="w-5 h-5" />
                     <span>{service.availability}</span>
@@ -563,10 +548,6 @@ const ServiceDetail = () => {
               >
                 <h3 className="text-xl font-bold text-gray-800 mb-4">Service Details</h3>
                 <div className="space-y-3">
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Experts Available:</span>
-                    <span className="font-semibold">{service.doctors}</span>
-                  </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">Availability:</span>
                     <span className="font-semibold">{service.availability}</span>

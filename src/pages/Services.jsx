@@ -48,9 +48,8 @@ const Services = () => {
         { label: 'Emergency Beds', value: '50+' },
         { label: 'Success Rate', value: '98%' }
       ],
-      specialists: 15,
       availability: '24/7',
-      contact: 'Emergency Hotline: 108'
+      contact: 'Emergency Hotline: +91 88008 33411'
     },
     'mental-health': {
       name: 'Mental Health',
@@ -74,9 +73,8 @@ const Services = () => {
         { label: 'Success Rate', value: '92%' },
         { label: 'Patient Satisfaction', value: '96%' }
       ],
-      specialists: 12,
       availability: 'Mon-Fri 8AM-8PM',
-      contact: 'Helpline: +1 (555) 123-MIND'
+      contact: 'Helpline: +91 88008 33411'
     },
     'cardiology': {
       name: 'Cardiology',
@@ -100,9 +98,8 @@ const Services = () => {
         { label: 'Success Rate', value: '97%' },
         { label: 'Cardiologists', value: '15+' }
       ],
-      specialists: 15,
       availability: '24/7 Emergency',
-      contact: 'Heart Care: +1 (555) 123-HEART'
+      contact: 'Heart Care: +91 88008 33411'
     },
     'neurology': {
       name: 'Neurology',
@@ -126,9 +123,8 @@ const Services = () => {
         { label: 'Procedures/Year', value: '3000+' },
         { label: 'Recovery Rate', value: '89%' }
       ],
-      specialists: 10,
       availability: 'Mon-Sat 8AM-8PM',
-      contact: 'Neuro Helpline: +1 (555) 123-NEURO'
+      contact: 'Neuro Helpline: +91 88008 33411'
     },
     'pediatrics': {
       name: 'Pediatrics',
@@ -152,9 +148,8 @@ const Services = () => {
         { label: 'Children Served', value: '10,000+' },
         { label: 'Parent Satisfaction', value: '98%' }
       ],
-      specialists: 12,
       availability: 'Mon-Sat 9AM-6PM',
-      contact: 'Pediatric Care: +1 (555) 123-KIDS'
+      contact: 'Pediatric Care: +91 88008 33411'
     },
     'orthopedics': {
       name: 'Orthopedics',
@@ -178,9 +173,8 @@ const Services = () => {
         { label: 'Success Rate', value: '96%' },
         { label: 'Orthopedic Surgeons', value: '18+' }
       ],
-      specialists: 18,
       availability: 'Mon-Fri 8AM-6PM',
-      contact: 'Orthopedic Care: +1 (555) 123-BONE'
+      contact: 'Orthopedic Care: +91 88008 33411'
     }
   }
 

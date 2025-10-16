@@ -8,18 +8,20 @@ import sangeethaImg from '../photo/sangeetha.jpg'
 
 const DataContext = createContext()
 
-export const useData = () => {
+function useData() {
   const context = useContext(DataContext)
   if (!context) {
-    console.error('useData must be used within DataProvider')
-    return { doctors: [], blogs: [], departments: [] }
+    throw new Error('useData must be used within DataProvider')
   }
   return context
 }
 
+export { useData }
+
 export const DataProvider = ({ children }) => {
   // Initial data with some sample entries
   const [doctors, setDoctors] = useState(() => {
+    // Force reset doctors data to ensure all 6 doctors are available
     const saved = localStorage.getItem('aimanDoctors')
     const defaultDoctors = [
       { 
@@ -28,7 +30,7 @@ export const DataProvider = ({ children }) => {
         specialty: 'Cardiology', 
         experience: '15+', 
         email: 'aditya.sharma@aimanhospital.com',
-        phone: '+1 (555) 123-4567',
+        phone: '+91 88008 33411',
         qualifications: 'MD, DM Cardiology, FACC',
         description: 'Dr. Aditya Sharma is a renowned cardiologist with over 15 years of experience in treating complex heart conditions. He specializes in interventional cardiology and has performed thousands of successful procedures.',
         image: adityaImg,
@@ -96,6 +98,7 @@ export const DataProvider = ({ children }) => {
       }
     ]
     
+    // Use saved doctors if available, otherwise use default doctors
     return saved ? JSON.parse(saved) : defaultDoctors
   })
 
@@ -138,6 +141,11 @@ export const DataProvider = ({ children }) => {
     ]
   })
 
+  const [newsletterSubscribers, setNewsletterSubscribers] = useState(() => {
+    const saved = localStorage.getItem('aimanNewsletterSubscribers')
+    return saved ? JSON.parse(saved) : []
+  })
+
   // Save to localStorage whenever data changes
   useEffect(() => {
     localStorage.setItem('aimanDoctors', JSON.stringify(doctors))
@@ -150,6 +158,10 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem('aimanDepartments', JSON.stringify(departments))
   }, [departments])
+
+  useEffect(() => {
+    localStorage.setItem('aimanNewsletterSubscribers', JSON.stringify(newsletterSubscribers))
+  }, [newsletterSubscribers])
 
   // Doctor CRUD operations
   const addDoctor = (doctor) => {
@@ -206,10 +218,103 @@ export const DataProvider = ({ children }) => {
     setDepartments(departments.filter(dept => dept.id !== id))
   }
 
+  // Newsletter operations
+  const addNewsletterSubscriber = (email) => {
+    const subscriber = {
+      id: `subscriber_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+      email,
+      subscribedAt: new Date().toISOString(),
+      active: true
+    }
+    setNewsletterSubscribers([...newsletterSubscribers, subscriber])
+    return subscriber
+  }
+
+  // Reset doctors to default (admin function)
+  const resetDoctorsToDefault = () => {
+    const defaultDoctors = [
+      { 
+        id: 'aditya', 
+        name: 'Dr. Aditya Sharma', 
+        specialty: 'Cardiology', 
+        experience: '15+', 
+        email: 'aditya.sharma@aimanhospital.com',
+        phone: '+91 88008 33411',
+        qualifications: 'MD, DM Cardiology, FACC',
+        description: 'Dr. Aditya Sharma is a renowned cardiologist with over 15 years of experience in treating complex heart conditions. He specializes in interventional cardiology and has performed thousands of successful procedures.',
+        image: adityaImg,
+        available: true
+      },
+      { 
+        id: 'akshita', 
+        name: 'Dr. Akshita Patel', 
+        specialty: 'Mental Health & Psychiatry', 
+        experience: '12+', 
+        email: 'akshita.patel@aimanhospital.com',
+        phone: '+1 (555) 123-4568',
+        qualifications: 'MD, DPM, PhD Psychology',
+        description: 'Dr. Akshita Patel is a compassionate psychiatrist specializing in mood disorders, anxiety, and trauma therapy. She combines evidence-based treatments with a patient-centered approach.',
+        image: akshitaImg,
+        available: true
+      },
+      { 
+        id: 'keshav', 
+        name: 'Dr. Keshav Singh', 
+        specialty: 'Orthopedics', 
+        experience: '18+', 
+        email: 'keshav.singh@aimanhospital.com',
+        phone: '+1 (555) 123-4569',
+        qualifications: 'MS Orthopedics, MCh, FRCS',
+        description: 'Dr. Keshav Singh is a leading orthopedic surgeon specializing in joint replacement and sports medicine. He has performed over 2000 successful surgeries and is known for his innovative techniques.',
+        image: keshavImg,
+        available: true
+      },
+      { 
+        id: 'kiran', 
+        name: 'Dr. Kiran Reddy', 
+        specialty: 'Pediatrics', 
+        experience: '14+', 
+        email: 'kiran.reddy@aimanhospital.com',
+        phone: '+1 (555) 123-4570',
+        qualifications: 'MD Pediatrics, DCH, MRCPCH',
+        description: 'Dr. Kiran Reddy is a dedicated pediatrician with a special focus on child development and preventive care. She has a gentle approach that makes children feel comfortable during visits.',
+        image: kiranImg,
+        available: true
+      },
+      { 
+        id: 'piyush', 
+        name: 'Dr. Piyush Agarwal', 
+        specialty: 'Neurology', 
+        experience: '16+', 
+        email: 'piyush.agarwal@aimanhospital.com',
+        phone: '+1 (555) 123-4571',
+        qualifications: 'MD Neurology, DM Neurology, FRCP',
+        description: 'Dr. Piyush Agarwal is a distinguished neurologist specializing in stroke treatment and neurological disorders. He leads our stroke unit and has saved countless lives through timely intervention.',
+        image: piyushImg,
+        available: true
+      },
+      { 
+        id: 'sangeetha', 
+        name: 'Dr. Sangeetha Iyer', 
+        specialty: 'Ophthalmology', 
+        experience: '13+', 
+        email: 'sangeetha.iyer@aimanhospital.com',
+        phone: '+1 (555) 123-4572',
+        qualifications: 'MS Ophthalmology, DNB, FICO',
+        description: 'Dr. Sangeetha Iyer is a skilled ophthalmologist specializing in cataract surgery and retinal treatments. She has performed over 3000 successful eye surgeries with excellent outcomes.',
+        image: sangeethaImg,
+        available: true
+      }
+    ]
+    setDoctors(defaultDoctors)
+    return defaultDoctors
+  }
+
   const contextValue = {
     doctors,
     blogs,
     departments,
+    newsletterSubscribers,
     addDoctor,
     updateDoctor,
     deleteDoctor,
@@ -218,7 +323,9 @@ export const DataProvider = ({ children }) => {
     deleteBlog,
     addDepartment,
     updateDepartment,
-    deleteDepartment
+    deleteDepartment,
+    addNewsletterSubscriber,
+    resetDoctorsToDefault
   }
 
   return (

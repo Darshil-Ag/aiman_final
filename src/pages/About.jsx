@@ -108,7 +108,11 @@ const About = () => {
   ]
 
   return (
-    <div className="pt-16">
+    <div className="pt-16 relative">
+      {/* Logo Background Watermark */}
+      <div className="fixed top-16 left-0 right-0 bottom-0 flex items-center justify-center pointer-events-none opacity-10 z-0">
+        <img src={logo} alt="AIMAN logo" className="w-96 h-auto" />
+      </div>
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-br from-primary-500 via-primary-600 to-secondary-700 text-white">
         <div className="absolute inset-0 bg-black opacity-10"></div>
@@ -138,68 +142,192 @@ const About = () => {
         </div>
       </section>
 
-      {/* Mission, Vision, Values */}
+      {/* Our Mission */}
       <section className="section-padding bg-white">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Mission */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="text-center"
-            >
-              <div className="w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Target className="w-10 h-10 text-primary-600" />
-              </div>
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Mission</h2>
-              <p className="text-gray-600 leading-relaxed">
-                {objective}
-              </p>
-            </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Our Mission</h2>
+          </motion.div>
 
-            {/* Vision */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="text-center"
-            >
-              <div className="w-20 h-20 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Eye className="w-10 h-10 text-secondary-600" />
+          <div className="flex flex-col lg:flex-row items-center gap-16">
+            {/* Illustration Side */}
+            <div className="lg:w-1/2 flex justify-center">
+              <div className="relative">
+                {/* Hexagonal design for mission */}
+                <div className="w-80 h-80 bg-gradient-to-br from-primary-100 to-primary-200 rounded-3xl flex items-center justify-center transform rotate-12">
+                  <div className="w-64 h-64 bg-white rounded-2xl shadow-xl flex items-center justify-center transform -rotate-12">
+                    <div className="text-center">
+                      <Target className="w-20 h-20 text-primary-600 mx-auto mb-4" />
+                      <div className="w-16 h-1 bg-primary-300 mx-auto mb-2"></div>
+                      <div className="w-12 h-1 bg-primary-200 mx-auto"></div>
+                    </div>
+                  </div>
+                </div>
+                {/* Decorative elements */}
+                <div className="absolute -top-6 -right-6 w-12 h-12 bg-primary-300 rounded-full opacity-60"></div>
+                <div className="absolute -bottom-6 -left-6 w-8 h-8 bg-secondary-300 rounded-full opacity-60"></div>
+                <div className="absolute top-1/2 -right-8 w-6 h-6 bg-primary-400 rounded-full opacity-40"></div>
               </div>
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Vision</h2>
-              <p className="text-gray-600 leading-relaxed">
-                {vision}
-              </p>
-            </motion.div>
+            </div>
 
-            {/* Values */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="text-center"
-            >
-              <div className="w-20 h-20 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Heart className="w-10 h-10 text-secondary-600" />
+            {/* Text Side */}
+            <div className="lg:w-1/2">
+              <div className="max-w-2xl">
+                <div className="flex items-center mb-6">
+                  <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center mr-4">
+                    <Target className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-gray-800">Our Mission</h3>
+                </div>
+                <p className="text-lg text-gray-600 leading-relaxed">
+                  {objective}
+                </p>
+                <div className="mt-8 flex items-center space-x-4">
+                  <div className="w-8 h-1 bg-primary-600"></div>
+                  <div className="w-6 h-1 bg-primary-400"></div>
+                  <div className="w-4 h-1 bg-primary-300"></div>
+                </div>
               </div>
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Values</h2>
-              <p className="text-gray-600 leading-relaxed">
-                Compassion, Excellence, Integrity, and Innovation guide everything we do. 
-                These core values shape our culture and drive our commitment to providing 
-                exceptional healthcare services.
-              </p>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Hospital Statistics */}
+      {/* Our Vision */}
       <section className="section-padding bg-primary-50">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Our Vision</h2>
+          </motion.div>
+
+          <div className="flex flex-col lg:flex-row-reverse items-center gap-16">
+            {/* Illustration Side */}
+            <div className="lg:w-1/2 flex justify-center">
+              <div className="relative">
+                {/* Diamond/rhombus design for vision */}
+                <div className="w-80 h-80 bg-gradient-to-br from-secondary-100 to-secondary-200 transform rotate-45 flex items-center justify-center">
+                  <div className="w-64 h-64 bg-white transform -rotate-45 flex items-center justify-center shadow-xl">
+                    <div className="text-center transform rotate-45">
+                      <Eye className="w-20 h-20 text-secondary-600 mx-auto mb-4" />
+                      <div className="flex justify-center space-x-2">
+                        <div className="w-2 h-2 bg-secondary-400 rounded-full"></div>
+                        <div className="w-2 h-2 bg-secondary-300 rounded-full"></div>
+                        <div className="w-2 h-2 bg-secondary-400 rounded-full"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* Decorative elements */}
+                <div className="absolute -top-4 -left-4 w-10 h-10 bg-secondary-300 rounded-full opacity-70"></div>
+                <div className="absolute -bottom-4 -right-4 w-8 h-8 bg-primary-300 rounded-full opacity-70"></div>
+                <div className="absolute top-1/4 -left-8 w-4 h-4 bg-secondary-400 rounded-full opacity-50"></div>
+                <div className="absolute bottom-1/4 -right-8 w-6 h-6 bg-primary-400 rounded-full opacity-50"></div>
+              </div>
+            </div>
+
+            {/* Text Side */}
+            <div className="lg:w-1/2">
+              <div className="max-w-2xl">
+                <div className="flex items-center mb-6">
+                  <div className="w-12 h-12 bg-secondary-600 rounded-full flex items-center justify-center mr-4">
+                    <Eye className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-gray-800">Our Vision</h3>
+                </div>
+                <p className="text-lg text-gray-600 leading-relaxed">
+                  {vision}
+                </p>
+                <div className="mt-8 flex items-center space-x-3">
+                  <div className="w-3 h-3 bg-secondary-600 rounded-full"></div>
+                  <div className="w-2 h-2 bg-secondary-400 rounded-full"></div>
+                  <div className="w-3 h-3 bg-secondary-600 rounded-full"></div>
+                  <div className="w-2 h-2 bg-secondary-400 rounded-full"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Values */}
+      <section className="section-padding bg-white">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <div className="w-20 h-20 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <Heart className="w-10 h-10 text-secondary-600" />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Our Values</h2>
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed">
+              Compassion, Excellence, Integrity, and Innovation guide everything we do. 
+              These core values shape our culture and drive our commitment to providing 
+              exceptional healthcare services.
+            </p>
+          </motion.div>
+
+          {/* Values with illustrations */}
+          <div className="space-y-16">
+            {values.map((value, index) => (
+              <motion.div
+                key={value.title}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12`}
+              >
+                {/* Illustration Side */}
+                <div className="lg:w-1/2 flex justify-center">
+                  <div className="relative">
+                    {/* Background circle */}
+                    <div className="w-64 h-64 bg-gradient-to-br from-primary-50 to-secondary-50 rounded-full flex items-center justify-center">
+                      {/* Medical illustration placeholder */}
+                      <div className="w-48 h-48 bg-white rounded-full shadow-lg flex items-center justify-center">
+                        {React.createElement(value.icon, { className: "w-24 h-24 text-primary-600" })}
+                      </div>
+                    </div>
+                    {/* Decorative elements */}
+                    <div className="absolute -top-4 -right-4 w-8 h-8 bg-primary-200 rounded-full"></div>
+                    <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-secondary-200 rounded-full"></div>
+                  </div>
+                </div>
+
+                {/* Text Side */}
+                <div className="lg:w-1/2">
+                  <div className="max-w-lg">
+                    <h3 className="text-3xl font-bold text-gray-800 mb-4">
+                      {value.title}
+                    </h3>
+                    <p className="text-lg text-gray-600 leading-relaxed">
+                      {value.description}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Hospital Statistics - COMMENTED OUT */}
+      {/* <section className="section-padding bg-primary-50">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -240,10 +368,10 @@ const About = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
-      {/* Our Values Detail */}
-      <section className="section-padding bg-white">
+      {/* What Drives Us */}
+      <section className="section-padding bg-primary-50">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -252,46 +380,46 @@ const About = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
               What Drives Us
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed">
               Our core values are the foundation of everything we do, 
-              guiding our decisions and actions every day.
+              guiding our decisions and actions every day. We are driven by our commitment 
+              to excellence, innovation, and the well-being of our community.
             </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {values.map((value, index) => (
+                <motion.div
+                  key={value.title}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="card"
+                >
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                      {React.createElement(value.icon, { className: "w-6 h-6 text-primary-600" })}
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                        {value.title}
+                      </h3>
+                      <p className="text-gray-600 leading-relaxed">
+                        {value.description}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {values.map((value, index) => (
-              <motion.div
-                key={value.title}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="card"
-              >
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    {React.createElement(value.icon, { className: "w-6 h-6 text-primary-600" })}
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                      {value.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      {value.description}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* Achievements & Certifications */}
-      <section className="section-padding bg-primary-50">
+      {/* Achievements & Certifications - COMMENTED OUT */}
+      {/* <section className="section-padding bg-primary-50">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -332,10 +460,10 @@ const About = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
-      {/* Our Story Timeline */}
-      <section className="section-padding bg-white">
+      {/* Our Story Timeline - COMMENTED OUT */}
+      {/* <section className="section-padding bg-white">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -354,7 +482,6 @@ const About = () => {
           </motion.div>
 
           <div className="relative">
-            {/* Timeline line */}
             <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary-600 to-secondary-600 hidden lg:block"></div>
 
             <div className="space-y-12">
@@ -388,7 +515,6 @@ const About = () => {
                     </div>
                   </div>
                   
-                  {/* Timeline dot */}
                   <div className="hidden lg:block w-4 h-4 bg-primary-600 rounded-full border-4 border-white shadow-lg"></div>
                   
                   <div className="lg:w-1/2"></div>
@@ -397,7 +523,7 @@ const About = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Call to Action */}
       <section className="section-padding bg-gradient-to-r from-primary-600 to-secondary-600">

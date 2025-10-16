@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Heart, Phone, Mail, MapPin, Clock, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react'
+import newLogo from '../photo/new_logo.jpg'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -50,15 +51,23 @@ const Footer = () => {
         <div className="py-12 sm:py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12">
           {/* Hospital Info */}
           <div className="space-y-4 sm:space-y-6">
-            <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-r from-primary-600 to-secondary-600 rounded-lg flex items-center justify-center shadow-lg">
-                <Heart className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
+            <div className="text-center">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-lg overflow-hidden shadow-lg mx-auto mb-4">
+                <img src={newLogo} alt="AIMAN Logo" className="w-full h-full object-cover" />
               </div>
-              <span className="text-2xl sm:text-3xl font-bold">AIMAN</span>
+              <div>
+                <span className="text-2xl sm:text-3xl font-bold">AIMAN</span>
+                <p className="text-xs sm:text-sm text-gray-300 mt-2">
+                  Advanced Institute of Medical and Allied Sciences Network
+                </p>
+              </div>
             </div>
-            <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+            <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-4">
               Your trusted partner in healthcare, providing comprehensive medical services 
               with compassion and excellence for over two decades.
+            </p>
+            <p className="text-yellow-300 text-lg sm:text-xl font-semibold">
+              "Your Mental Health Matters"
             </p>
             <div className="flex flex-wrap gap-3 sm:gap-4">
               {socialLinks.map((social) => (
@@ -134,15 +143,6 @@ const Footer = () => {
                 <a href="mailto:info@aimanhealth.com" className="text-gray-300 text-sm sm:text-base hover:text-primary-400 transition-colors break-all">
                   info@aimanhealth.com
                 </a>
-              </div>
-              <div className="flex items-start space-x-3">
-                <Clock className="w-5 h-5 text-primary-400 mt-1 flex-shrink-0" />
-                <div>
-                  <p className="text-gray-300 text-sm sm:text-base">
-                    Mon - Fri: 8:00 AM - 8:00 PM<br />
-                    Sat - Sun: 9:00 AM - 6:00 PM
-                  </p>
-                </div>
               </div>
             </div>
           </div>

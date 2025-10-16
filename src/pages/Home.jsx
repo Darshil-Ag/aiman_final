@@ -13,7 +13,8 @@ import {
   Stethoscope,
   Brain,
   Baby,
-  Activity
+  Activity,
+  Building
 } from 'lucide-react'
 import groupPhoto from '../photo/group photo.jpg'
 import logo from '../photo/logo.png'
@@ -28,27 +29,31 @@ const Home = () => {
   const specialties = [
     {
       icon: Heart,
-      title: 'Cardiology',
-      description: 'Advanced heart care with state-of-the-art technology',
-      color: 'from-red-500 to-pink-500'
+      title: '24/7 Emergency Mental Health Services',
+      description: 'Round-the-clock emergency mental health services with crisis intervention',
+      color: 'from-red-600 to-red-500',
+      link: '/our-services#emergency-mental-health'
     },
     {
       icon: Brain,
-      title: 'Mental Health',
-      description: 'Comprehensive mental wellness and psychiatric care',
-      color: 'from-purple-500 to-indigo-500'
+      title: 'Clinical Psychology and Therapy Services',
+      description: 'Comprehensive therapeutic approaches including CBT, DBT, and trauma counseling',
+      color: 'from-indigo-500 to-purple-500',
+      link: '/our-services#clinical-psychology'
     },
     {
       icon: Baby,
-      title: 'Pediatrics',
-      description: 'Specialized care for children of all ages',
-      color: 'from-green-500 to-teal-500'
+      title: 'Child and Adolescent Mental Health Services',
+      description: 'Specialized mental health services for children and adolescents',
+      color: 'from-pink-500 to-rose-500',
+      link: '/our-services#child-adolescent'
     },
     {
-      icon: Activity,
-      title: 'Orthopedics',
-      description: 'Expert bone and joint treatment and surgery',
-      color: 'from-blue-500 to-cyan-500'
+      icon: Shield,
+      title: 'De-addiction and Rehabilitation Services',
+      description: 'Comprehensive substance abuse treatment and rehabilitation programs',
+      color: 'from-purple-500 to-indigo-500',
+      link: '/our-services#deaddiction-rehab'
     }
   ]
 
@@ -151,8 +156,12 @@ const Home = () => {
       </section>
 
       {/* Specialties Section */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
+      <section className="section-padding bg-white relative overflow-hidden">
+        {/* Logo Background */}
+        <div className="fixed inset-0 flex items-center justify-center pointer-events-none opacity-15 z-0">
+          <img src={logo} alt="AIMAN logo" className="w-80 h-auto" />
+        </div>
+        <div className="container-custom relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -189,7 +198,7 @@ const Home = () => {
                   {specialty.description}
                 </p>
                 <Link
-                  to="/departments"
+                  to={specialty.link}
                   className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center"
                 >
                   Learn More
@@ -202,8 +211,12 @@ const Home = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="section-padding bg-primary-50">
-        <div className="container-custom">
+      <section className="section-padding bg-primary-50 relative overflow-hidden">
+        {/* Logo Background */}
+        <div className="fixed inset-0 flex items-center justify-center pointer-events-none opacity-15 z-0">
+          <img src={logo} alt="AIMAN logo" className="w-80 h-auto" />
+        </div>
+        <div className="container-custom relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -246,8 +259,12 @@ const Home = () => {
       </section>
 
       {/* Doctors Section */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
+      <section className="section-padding bg-white relative overflow-hidden">
+        {/* Logo Background */}
+        <div className="fixed inset-0 flex items-center justify-center pointer-events-none opacity-15 z-0">
+          <img src={logo} alt="AIMAN logo" className="w-80 h-auto" />
+        </div>
+        <div className="container-custom relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -313,9 +330,13 @@ const Home = () => {
       </section>
 
 
-      {/* Our Services Section */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
+      {/* Our Services Section - Horizontal Scrolling */}
+      <section className="py-10 bg-primary-50 overflow-hidden relative">
+        {/* Logo Background */}
+        <div className="fixed inset-0 flex items-center justify-center pointer-events-none opacity-15 z-0">
+          <img src={logo} alt="AIMAN logo" className="w-80 h-auto" />
+        </div>
+        <div className="container-custom relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -331,93 +352,150 @@ const Home = () => {
               with state-of-the-art facilities and expert care.
             </p>
           </motion.div>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Horizontal Scrolling Services */}
+        <div className="relative">
+          <motion.div
+            className="flex space-x-8 py-8"
+            animate={{
+              x: [-100 * 6, 0] // Move from left to right
+            }}
+            transition={{
+              x: {
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 30,
+                ease: "linear"
+              }
+            }}
+          >
+            {/* First set of services */}
             {[
               {
-                title: 'Emergency Care',
-                description: '24/7 emergency services with rapid response and critical care support.',
-                icon: '🚨',
-                features: ['24/7 Availability', 'Rapid Response', 'Critical Care', 'Trauma Center']
+                title: '24/7 Emergency Mental Health',
+                icon: Brain,
+                color: 'from-red-600 to-red-500',
+                link: '/our-services#emergency-mental-health'
               },
               {
-                title: 'Diagnostic Services',
-                description: 'Advanced diagnostic imaging and laboratory services for accurate diagnosis.',
-                icon: '🔬',
-                features: ['MRI & CT Scan', 'Laboratory Tests', 'Ultrasound', 'X-Ray Services']
+                title: 'OPD Services',
+                icon: Users,
+                color: 'from-blue-500 to-cyan-500',
+                link: '/our-services#opd-services'
               },
               {
-                title: 'Surgical Services',
-                description: 'Minimally invasive and traditional surgical procedures with expert surgeons.',
-                icon: '⚕️',
-                features: ['Laparoscopic Surgery', 'Cardiac Surgery', 'Orthopedic Surgery', 'General Surgery']
+                title: 'IPD Services',
+                icon: Building,
+                color: 'from-green-500 to-teal-500',
+                link: '/our-services#ipd-services'
               },
               {
-                title: 'Rehabilitation',
-                description: 'Comprehensive rehabilitation services for recovery and wellness.',
-                icon: '🏥',
-                features: ['Physical Therapy', 'Occupational Therapy', 'Speech Therapy', 'Sports Medicine']
+                title: 'De-addiction & Rehab',
+                icon: Shield,
+                color: 'from-purple-500 to-indigo-500',
+                link: '/our-services#deaddiction-rehab'
               },
               {
-                title: 'Preventive Care',
-                description: 'Regular check-ups and preventive screenings for optimal health.',
-                icon: '🛡️',
-                features: ['Health Checkups', 'Vaccinations', 'Cancer Screening', 'Wellness Programs']
+                title: 'Child & Adolescent Care',
+                icon: Baby,
+                color: 'from-pink-500 to-rose-500',
+                link: '/our-services#child-adolescent'
               },
               {
-                title: 'Telemedicine',
-                description: 'Remote consultations and digital health services for your convenience.',
-                icon: '💻',
-                features: ['Online Consultations', 'Digital Prescriptions', 'Health Monitoring', 'Remote Care']
+                title: 'Clinical Psychology',
+                icon: Brain,
+                color: 'from-indigo-500 to-purple-500',
+                link: '/our-services#clinical-psychology'
               }
             ].map((service, index) => (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="card group hover:scale-105 transition-transform duration-300"
+              <Link
+                key={`first-${index}`}
+                to={service.link}
+                className="flex-shrink-0 w-80 h-32 bg-white rounded-xl flex items-center justify-center space-x-4 px-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
               >
-                <div className="text-center mb-6">
-                  <div className="text-6xl mb-4">{service.icon}</div>
-                  <h3 className="text-2xl font-semibold text-gray-800 mb-3">
+                <div className={`w-12 h-12 bg-gradient-to-r ${service.color} rounded-full flex items-center justify-center`}>
+                  {React.createElement(service.icon, { className: "w-6 h-6 text-white" })}
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-800">
                     {service.title}
                   </h3>
-                  <p className="text-gray-600 mb-4">
-                    {service.description}
+                  <p className="text-sm text-gray-600">
+                    Professional Care
                   </p>
                 </div>
-                
-                <div className="space-y-2 mb-6">
-                  {service.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
-                      <span className="text-sm text-gray-600">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-                
-                <Link
-                  to="/our-services"
-                  className="btn-primary w-full text-center"
-                >
-                  Learn More
-                  <ArrowRight className="w-4 h-4 ml-2 inline" />
-                </Link>
-              </motion.div>
+              </Link>
             ))}
-          </div>
 
-          <div className="text-center mt-12">
-            <Link
-              to="/our-services"
-              className="btn-outline text-lg px-8 py-3 inline-flex items-center"
-            >
-              View All Services
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Link>
-          </div>
+            {/* Duplicate set for seamless loop */}
+            {[
+              {
+                title: '24/7 Emergency Mental Health',
+                icon: Brain,
+                color: 'from-red-600 to-red-500',
+                link: '/our-services#emergency-mental-health'
+              },
+              {
+                title: 'OPD Services',
+                icon: Users,
+                color: 'from-blue-500 to-cyan-500',
+                link: '/our-services#opd-services'
+              },
+              {
+                title: 'IPD Services',
+                icon: Building,
+                color: 'from-green-500 to-teal-500',
+                link: '/our-services#ipd-services'
+              },
+              {
+                title: 'De-addiction & Rehab',
+                icon: Shield,
+                color: 'from-purple-500 to-indigo-500',
+                link: '/our-services#deaddiction-rehab'
+              },
+              {
+                title: 'Child & Adolescent Care',
+                icon: Baby,
+                color: 'from-pink-500 to-rose-500',
+                link: '/our-services#child-adolescent'
+              },
+              {
+                title: 'Clinical Psychology',
+                icon: Brain,
+                color: 'from-indigo-500 to-purple-500',
+                link: '/our-services#clinical-psychology'
+              }
+            ].map((service, index) => (
+              <Link
+                key={`second-${index}`}
+                to={service.link}
+                className="flex-shrink-0 w-80 h-32 bg-white rounded-xl flex items-center justify-center space-x-4 px-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+              >
+                <div className={`w-12 h-12 bg-gradient-to-r ${service.color} rounded-full flex items-center justify-center`}>
+                  {React.createElement(service.icon, { className: "w-6 h-6 text-white" })}
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-800">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm text-gray-600">
+                    Professional Care
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </motion.div>
+        </div>
+
+        <div className="container-custom text-center mt-12">
+          <Link
+            to="/our-services"
+            className="btn-outline text-lg px-8 py-3 inline-flex items-center"
+          >
+            View All Services
+            <ArrowRight className="w-5 h-5 ml-2" />
+          </Link>
         </div>
       </section>
 
