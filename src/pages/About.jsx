@@ -88,7 +88,7 @@ const About = () => {
     {
       year: '2005',
       title: 'Expansion',
-      description: 'Added specialized departments including Cardiology, Neurology, and Mental Health services.'
+      description: 'Added specialized departments including psychiatrist, Neurology, and Mental Health services.'
     },
     {
       year: '2012',

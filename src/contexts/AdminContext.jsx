@@ -2,13 +2,15 @@ import React, { createContext, useContext, useState, useEffect } from 'react'
 
 const AdminContext = createContext()
 
-export const useAdmin = () => {
+const useAdmin = () => {
   const context = useContext(AdminContext)
   if (!context) {
     throw new Error('useAdmin must be used within AdminProvider')
   }
   return context
 }
+
+export { useAdmin }
 
 export const AdminProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)

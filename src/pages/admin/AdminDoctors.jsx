@@ -365,7 +365,7 @@ const AdminDoctors = () => {
                         value={formData.specialty}
                         onChange={handleInputChange}
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                        placeholder="Cardiology"
+                        placeholder="Psychiarist"
                         required
                       />
                     </div>
@@ -432,7 +432,7 @@ const AdminDoctors = () => {
                       value={formData.qualifications}
                       onChange={handleInputChange}
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                      placeholder="MBBS, MD (Cardiology)"
+                      placeholder="MBBS, MD (Psychiarist)"
                       required
                     />
                   </div>
@@ -537,7 +537,7 @@ const AdminDoctors = () => {
                       onChange={(e) => setFormData({...formData, education: e.target.value.split('\n').filter(item => item.trim())})}
                       rows="3"
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                      placeholder="MD, DM Cardiology, FACC&#10;Fellowship in Interventional Cardiology"
+                      placeholder="MD, DM Psychiarist, FACC&#10;Fellowship in Interventional Psychiarist"
                     />
                   </div>
 
@@ -552,7 +552,7 @@ const AdminDoctors = () => {
                       onChange={(e) => setFormData({...formData, specializations: e.target.value.split('\n').filter(item => item.trim())})}
                       rows="3"
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                      placeholder="Interventional Cardiology&#10;Preventive Cardiology&#10;Cardiac Rehabilitation"
+                      placeholder="Interventional Psychiarist&#10;Preventive Psychiarist&#10;Cardiac Rehabilitation"
                     />
                   </div>
 
@@ -612,7 +612,7 @@ const AdminDoctors = () => {
                       onChange={(e) => setFormData({...formData, publications: e.target.value.split('\n').filter(item => item.trim())})}
                       rows="3"
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                      placeholder="Advanced Techniques in Interventional Cardiology&#10;Preventive Cardiology: A Comprehensive Guide&#10;Cardiac Rehabilitation Protocols"
+                      placeholder="Advanced Techniques in Interventional Psychiarist&#10;Preventive Psychiarist: A Comprehensive Guide&#10;Cardiac Rehabilitation Protocols"
                     />
                   </div>
                 </div>

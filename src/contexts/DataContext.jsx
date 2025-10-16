@@ -8,7 +8,8 @@ import sangeethaImg from '../photo/sangeetha.jpg'
 
 const DataContext = createContext()
 
-function useData() {
+// Use a const declaration with arrow function for maximum compatibility
+const useData = () => {
   const context = useContext(DataContext)
   if (!context) {
     throw new Error('useData must be used within DataProvider')
@@ -25,77 +26,78 @@ export const DataProvider = ({ children }) => {
     const saved = localStorage.getItem('aimanDoctors')
     const defaultDoctors = [
       { 
-        id: 'aditya', 
-        name: 'Dr. Aditya Sharma', 
-        specialty: 'Cardiology', 
-        experience: '15+', 
-        email: 'aditya.sharma@aimanhospital.com',
-        phone: '+91 88008 33411',
-        qualifications: 'MD, DM Cardiology, FACC',
-        description: 'Dr. Aditya Sharma is a renowned cardiologist with over 15 years of experience in treating complex heart conditions. He specializes in interventional cardiology and has performed thousands of successful procedures.',
-        image: adityaImg,
-        available: true
-      },
-      { 
-        id: 'akshita', 
-        name: 'Dr. Akshita Patel', 
-        specialty: 'Mental Health & Psychiatry', 
-        experience: '12+', 
-        email: 'akshita.patel@aimanhospital.com',
-        phone: '+1 (555) 123-4568',
-        qualifications: 'MD, DPM, PhD Psychology',
-        description: 'Dr. Akshita Patel is a compassionate psychiatrist specializing in mood disorders, anxiety, and trauma therapy. She combines evidence-based treatments with a patient-centered approach.',
-        image: akshitaImg,
-        available: true
-      },
-      { 
-        id: 'keshav', 
-        name: 'Dr. Keshav Singh', 
-        specialty: 'Orthopedics', 
-        experience: '18+', 
-        email: 'keshav.singh@aimanhospital.com',
-        phone: '+1 (555) 123-4569',
-        qualifications: 'MS Orthopedics, MCh, FRCS',
-        description: 'Dr. Keshav Singh is a leading orthopedic surgeon specializing in joint replacement and sports medicine. He has performed over 2000 successful surgeries and is known for his innovative techniques.',
-        image: keshavImg,
-        available: true
-      },
-      { 
-        id: 'kiran', 
-        name: 'Dr. Kiran Reddy', 
-        specialty: 'Pediatrics', 
-        experience: '14+', 
-        email: 'kiran.reddy@aimanhospital.com',
-        phone: '+1 (555) 123-4570',
-        qualifications: 'MD Pediatrics, DCH, MRCPCH',
-        description: 'Dr. Kiran Reddy is a dedicated pediatrician with a special focus on child development and preventive care. She has a gentle approach that makes children feel comfortable during visits.',
-        image: kiranImg,
-        available: true
-      },
-      { 
         id: 'piyush', 
-        name: 'Dr. Piyush Agarwal', 
-        specialty: 'Neurology', 
-        experience: '16+', 
-        email: 'piyush.agarwal@aimanhospital.com',
-        phone: '+1 (555) 123-4571',
-        qualifications: 'MD Neurology, DM Neurology, FRCP',
-        description: 'Dr. Piyush Agarwal is a distinguished neurologist specializing in stroke treatment and neurological disorders. He leads our stroke unit and has saved countless lives through timely intervention.',
+        name: 'Dr. Piyush Verma', 
+        specialty: 'Psychiatrist', 
+        experience: '11+', 
+        email: 'piyush.verma@aimanhospital.com',
+        phone: '+91 98765 43210',
+        qualifications: 'MBBS, MD Psychiatry, PGIMER Rohtak',
+        description: 'Dr Piyush believe that mental health is for all. As a psychiatrist of more than 11 years of clinical expertise, he has deep compassion to support individuals and their family through their mental health journey. With academic training and experience from PGIMER Rohtak dr Piyush integrate latest scientific findings into ever day psychiatry practice. He actively contribute to ongoing research and medical education. Dr Piyush is also passionate about raising awareness around mental health and reducing stigma.',
         image: piyushImg,
         available: true
       },
       { 
         id: 'sangeetha', 
-        name: 'Dr. Sangeetha Iyer', 
-        specialty: 'Ophthalmology', 
-        experience: '13+', 
-        email: 'sangeetha.iyer@aimanhospital.com',
-        phone: '+1 (555) 123-4572',
-        qualifications: 'MS Ophthalmology, DNB, FICO',
-        description: 'Dr. Sangeetha Iyer is a skilled ophthalmologist specializing in cataract surgery and retinal treatments. She has performed over 3000 successful eye surgeries with excellent outcomes.',
+        name: 'Dr. Sangeeta Hatila', 
+        specialty: 'Psychiatrist', 
+        experience: '8+', 
+        email: 'sangeetha.hatila@aimanhospital.com',
+        phone: '+91 98765 43211',
+        qualifications: 'MBBS, MD Psychiatry, SMS Medical College',
+        description: 'Dr Sangeeta is dedicated and compassionate psychiatrist with 8 years of extensive experience in diagnosing and treating wide range of mental health conditions. After her MBBS, she did her MD psychiatry from SMS Medical college. She also served as assistant professor in SPMC, Bikaner which equipped her with comprehensive knowledge and skills to deliver high quality care. She has number of publications and academics paper throughout her career. Dr Sangeeta communicate fluently in English, Hindi allowing her to engage effectively with diverse patient population.',
         image: sangeethaImg,
         available: true
-      }
+      },
+      { 
+        id: 'aditya', 
+        name: 'Dr. Aditya Sharma', 
+        specialty: 'Psychiatrist', 
+        experience: '5+', 
+        email: 'aditya.sharma@aimanhospital.com',
+        phone: '+91 98765 43212',
+        qualifications: 'MBBS, MD Psychiatry, SMS Medical College, IHBAS Delhi',
+        description: 'Dr Aditya is consultant psychiatrist with strong background in clinical psychiatry and mental health advocacy. After doing his MD from SMS medical college, Dr Aditya had experience of working in IHBAS, Delhi. With over 5 years of experiences he has worked with diverse patient population addressing range of psychiatric disorders. Dr Aditya is actively involved in medical education and academic research.',
+        image: adityaImg,
+        available: true
+      },
+      { 
+        id: 'kiran', 
+        name: 'Dr. Kiran Bala', 
+        specialty: 'Neurologist', 
+        experience: '30+', 
+        email: 'kiran.bala@aimanhospital.com',
+        phone: '+91 98765 43213',
+        qualifications: 'MBBS, MD Neurology, DM Neurology',
+        description: 'Dr. Kiran Bala is a highly respected neurologist with over 30 years of experience in the field. Based in Gurgaon, she has built a distinguished career diagnosing and treating a broad spectrum of neurological conditions, earning widespread recognition and trust from both patients and medical professionals. Renowned for her deep clinical expertise and dedication to excellence, Dr. Bala is considered a leading authority in neurology. Her patient-centered approach, marked by compassion and attentiveness, ensures that every individual receives personalized care tailored to their unique needs.',
+        image: kiranImg,
+        available: true
+      },      
+      { 
+        id: 'akshita', 
+        name: 'Miss Akshita Shukla', 
+        specialty: 'Psychologist', 
+        experience: '5+', 
+        email: 'akshita.shukla@aimanhospital.com',
+        phone: '+91 98765 43214',
+        qualifications: 'M.Phil Clinical Psychology, Amity University Noida',
+        description: 'Committed to create safe spaces for healing, Miss Akshita received her clinical psychology and M.phil degree from Amity university, Noida. She has worked extensively in assessment, therapy of individuals. She provides tailored integrative care in various psychiatric disorders.',
+        image: akshitaImg,
+        available: true
+      },
+      { 
+        id: 'keshav', 
+        name: 'Miss Keshav Sharma', 
+        specialty: 'Psychologist', 
+        experience: '8+', 
+        email: 'keshav.sharma@aimanhospital.com',
+        phone: '+91 98765 43215',
+        qualifications: 'M.Sc Clinical Psychology, University of Jammu and Kashmir',
+        description: 'With years of clinical expertise, Miss Keshav is dedicated to provide compassionate health care. She hold master of science in clinical psychology from university of Jammu and Kashmir. She specialise in grief counselling and psycho-oncology. She works with individuals of all age group.',
+        image: keshavImg,
+        available: true
+      }   
+      
     ]
     
     // Use saved doctors if available, otherwise use default doctors
@@ -124,7 +126,7 @@ export const DataProvider = ({ children }) => {
     return saved ? JSON.parse(saved) : [
       {
         id: '1',
-        name: 'Cardiology',
+        name: 'psychiatrist',
         description: 'Advanced heart care with state-of-the-art technology',
         icon: 'Heart',
         facilities: ['24/7 Emergency', 'ICU', 'Cath Lab'],
@@ -236,12 +238,12 @@ export const DataProvider = ({ children }) => {
       { 
         id: 'aditya', 
         name: 'Dr. Aditya Sharma', 
-        specialty: 'Cardiology', 
+        specialty: 'Psychiatrist', 
         experience: '15+', 
         email: 'aditya.sharma@aimanhospital.com',
         phone: '+91 88008 33411',
-        qualifications: 'MD, DM Cardiology, FACC',
-        description: 'Dr. Aditya Sharma is a renowned cardiologist with over 15 years of experience in treating complex heart conditions. He specializes in interventional cardiology and has performed thousands of successful procedures.',
+        qualifications: 'MD, DM psychiatrist, FACC',
+        description: 'Dr. Aditya Sharma is a renowned cardiologist with over 15 years of experience in treating complex heart conditions. He specializes in interventional psychiatrist and has performed thousands of successful procedures.',
         image: adityaImg,
         available: true
       },
@@ -283,13 +285,13 @@ export const DataProvider = ({ children }) => {
       },
       { 
         id: 'piyush', 
-        name: 'Dr. Piyush Agarwal', 
-        specialty: 'Neurology', 
-        experience: '16+', 
-        email: 'piyush.agarwal@aimanhospital.com',
-        phone: '+1 (555) 123-4571',
-        qualifications: 'MD Neurology, DM Neurology, FRCP',
-        description: 'Dr. Piyush Agarwal is a distinguished neurologist specializing in stroke treatment and neurological disorders. He leads our stroke unit and has saved countless lives through timely intervention.',
+        name: 'Dr. Piyush Verma', 
+        specialty: 'Psychiatrist', 
+        experience: '11+', 
+        email: 'piyush.verma@aimanhospital.com',
+        phone: '+91 98765 43210',
+        qualifications: 'MBBS, MD Psychiatry, PGIMER Rohtak',
+        description: 'Dr Piyush believe that mental health is for all. As a psychiatrist of more than 11 years of clinical expertise, he has deep compassion to support individuals and their family through their mental health journey. With academic training and experience from PGIMER Rohtak dr Piyush integrate latest scientific findings into ever day psychiatry practice. He actively contribute to ongoing research and medical education. Dr Piyush is also passionate about raising awareness around mental health and reducing stigma.',
         image: piyushImg,
         available: true
       },
